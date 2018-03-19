@@ -8,7 +8,7 @@ import { providers } from '../../services/firebase';
 
 const ui = new firebaseui.auth.AuthUI(firebase.auth());
 
-class Login extends PureComponent{
+class Auth extends PureComponent{
   componentDidMount() {
     this.props.user ? clearUser() : '';
     const { origin } = window.location;
@@ -16,11 +16,11 @@ class Login extends PureComponent{
 
     ui.start('#firebaseui-auth-container', {
       //need to correct this route or delete it.
-      signInSuccessUrl: `${origin}/game`,
+      signInSuccessUrl: `${origin}/dashboard`,
       callbacks: { 
         signInSuccess: function() {
           //need to change to route to go to correct place. should be where user came from
-          setTimeout(() =>  history.push('/game'), 100);
+          setTimeout(() =>  history.push('/dashboard'), 100);
           
           return false;
         }
@@ -49,4 +49,4 @@ export default connect(
   //might be different state so change to what is needed.
   state => ({ user: state.user }),
   null
-)(Login);
+)(Auth);

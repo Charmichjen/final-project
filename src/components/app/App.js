@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 import { connect } from 'react-redux';
 import Home from '../home/Home';
 import Dashboard from '../dashboard/Dashboard';
+import Auth from '../auth/Auth';
 //bring in private route if we use it. Add private route file from other lab if use private route
 //import PrivateRoute from './PrivateRoute'; 
 import { listenForUser } from '../auth/actions';
@@ -19,7 +20,6 @@ class App extends PureComponent{
       <div>
         <Router>
           <Switch>
-
             <Route exact path='/' component={Home}/> 
             <Route path='/dashboard/' component={Dashboard}/>
             {/* <PrivateRoute exact path='/game' component={Main}/> */}

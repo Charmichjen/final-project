@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from  'react-redux';
-import Login from '../auth/Auth';
+import Auth from '../auth/Auth';
 
 class Home extends PureComponent {
 
@@ -9,7 +9,7 @@ class Home extends PureComponent {
     return (
       <div>
         <header><h1>Hello Bucket list</h1></header>
-        <Login/>
+        <Auth history={this.props.history}/>
       </div>
     );
   }
