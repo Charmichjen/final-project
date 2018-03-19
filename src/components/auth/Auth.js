@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import firebaseui from 'firebaseui';
 import firebase from 'firebase';
 import { connect } from 'react-redux';
-import { providers } from '../services/firebase';
+import { providers } from '../../services/firebase';
 // import { clearUser } from './actions';
 
 

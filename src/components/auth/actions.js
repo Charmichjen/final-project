@@ -1,4 +1,5 @@
 import { auth } from '../../services/firebase';
+import { USER } from './reducers';
 
 export function listenForUser() {
   return dispatch => {
