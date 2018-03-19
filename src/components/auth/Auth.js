@@ -24,7 +24,7 @@ class Auth extends PureComponent{
           
           setTimeout(() =>  {
             users.child(user.uid).set({ name: user.displayName });
-            history.push('/dashboard')}, 100);
+            history.push('/dashboard');}, 100);
           
           
           return false;
