@@ -1,5 +1,6 @@
 import { auth } from '../../services/firebase';
-import { USER } from './reducers';
+import { USER, CLEAR_USER } from './reducers';
+
 
 export function listenForUser() {
   return dispatch => {
@@ -9,6 +10,12 @@ export function listenForUser() {
         payload: user
       });
     });
+  };
+}
+
+export function clearUser() {
+  return {
+    type: CLEAR_USER
   };
 }
 

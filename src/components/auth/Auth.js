@@ -3,7 +3,7 @@ import firebaseui from 'firebaseui';
 import firebase from 'firebase';
 import { connect } from 'react-redux';
 import { providers } from '../../services/firebase';
-// import { clearUser } from './actions';
+import { clearUser } from './actions';
 
 
 const ui = new firebaseui.auth.AuthUI(firebase.auth());
@@ -48,5 +48,5 @@ class Auth extends PureComponent{
 export default connect(
   //might be different state so change to what is needed.
   state => ({ user: state.user }),
-  null
+  { clearUser }
 )(Auth);
