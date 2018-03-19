@@ -2,25 +2,30 @@ import React, { PureComponent } from 'react';
 import firebaseui from 'firebaseui';
 import firebase from 'firebase';
 import { connect } from 'react-redux';
-import { providers } from '../../services/firebase';
+import { providers, db } from '../../services/firebase';
 import { clearUser } from './actions';
 
 
 const ui = new firebaseui.auth.AuthUI(firebase.auth());
+const users = db.ref('users');
 
 class Auth extends PureComponent{
   componentDidMount() {
     this.props.user ? clearUser() : '';
     const { origin } = window.location;
-    const { history } = this.props;
-
+    const { history, user } = this.props;
+    const props = this.props;
     ui.start('#firebaseui-auth-container', {
       //need to correct this route or delete it.
       signInSuccessUrl: `${origin}/dashboard`,
       callbacks: { 
-        signInSuccess: function() {
+        signInSuccess: function(user) {
           //need to change to route to go to correct place. should be where user came from
-          setTimeout(() =>  history.push('/dashboard'), 100);
+          
+          setTimeout(() =>  {
+            users.child(user.uid).set({ name: user.displayName });
+            history.push('/dashboard')}, 100);
+          
           
           return false;
         }
