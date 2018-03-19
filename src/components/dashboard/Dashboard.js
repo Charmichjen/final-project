@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from  'react-redux';
 
-
 class Dashboard extends PureComponent {
 
   render() {
