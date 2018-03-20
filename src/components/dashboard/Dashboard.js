@@ -5,7 +5,8 @@ import { newGoal, getUserGoals } from './actions';
 class Dashboard extends PureComponent {
 
   state = {
-    goal: ''
+    goal: '',
+    editing: false
   };
 
   componentWillReceiveProps(nextProps) {
@@ -17,7 +18,8 @@ class Dashboard extends PureComponent {
 
   handleChange = ({ target }) => {
     this.setState({
-      goal: target.value
+      goal: target.value,
+      completed: false
     });
   };
    
@@ -30,7 +32,12 @@ class Dashboard extends PureComponent {
     this.setState({
       goal: ''
     });
+  };
 
+  handleEdit = () => {
+    this.setState({
+      editing: true
+    });
   };
 
   render() {
@@ -44,7 +51,11 @@ class Dashboard extends PureComponent {
           <input onChange={this.handleChange} value={goal}/>
           <button>Add Goal</button>
         </form>
-        {goals && goals.map(goal => <li key={goal.key} id={goal.key}>{goal.name}</li>)}
+        {goals && goals.map(goal => 
+          <li key={goal.key} id={goal.key}>{goal.name} 
+            {/* <button onClick={this.handleEdit}>Edit</button>
+            <button>Delete</button> */}
+          </li>)}
       </div>
     );
   }

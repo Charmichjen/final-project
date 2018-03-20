@@ -26,6 +26,7 @@ export function getUserGoals(id) {
         let goal = {};
         goal.name = goals[key];
         goal.key = key;
+        goal.completed = goals[key].completed;
         return goal;
       });
     })
