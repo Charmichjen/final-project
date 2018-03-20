@@ -25,6 +25,7 @@ class Dashboard extends PureComponent {
 
     const { goal } = this.state;
     this.props.newGoal(goal);
+    this.props.getUserGoals(this.props.user.uid);
     this.setState({
       goal: ''
     });
