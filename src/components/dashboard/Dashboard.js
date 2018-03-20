@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from  'react-redux';
 import { newGoal, getUserGoals, editGoal } from './actions';
 import EditForm from '../editForm/EditForm';
+import CompleteForm from '../completeForm/CompleteForm';
 
 class Dashboard extends PureComponent {
 
@@ -54,12 +55,14 @@ class Dashboard extends PureComponent {
           <input onChange={this.handleChange} value={goal}/>
           <button>Add Goal</button>
         </form>
-        {goals && goals.map(goal => 
-          <li key={goal.key} id={goal.key}>{goal.name} 
+        {goals && goals.map((goal, i) => 
+          <li key={i} id={goal.key}>{goal.name} 
             <button onClick={this.handleEdit}>Edit</button>
             <button onClick={this.handleDelete}>Delete</button>
+            <button >Complete</button>
             {editing ? <EditForm onEdit={editGoal}/> : null }
           </li>)}
+        <CompleteForm/>
       </div>
     );
   }
