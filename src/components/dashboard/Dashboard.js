@@ -34,6 +34,7 @@ class Dashboard extends PureComponent {
 
   render() {
     const { goal } = this.state;
+    const { goals } = this.props;
     console.log('this user is', this.props.user);
     return (
       <div>
@@ -42,11 +43,14 @@ class Dashboard extends PureComponent {
           <input onChange={this.handleChange} value={goal}/>
           <button>Add Goal</button>
         </form>
+        {goals && goals.map(goal => <li key={goal.id} id={goal.id}>{goal.name}</li>)}
       </div>
     );
   }
 }
 export default connect (
-  state => ({ user: state.user }),
+  state => ({ 
+    user: state.user,
+    goals: state.goals }),
   { newGoal, getUserGoals }
 )(Dashboard);
