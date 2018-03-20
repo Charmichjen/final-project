@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from  'react-redux';
-import { newGoal, getUserGoals } from './actions';
+import { newGoal, getUserGoals, editGoal } from './actions';
+import EditForm from '../editForm/EditForm';
 
 class Dashboard extends PureComponent {
 
@@ -40,8 +41,10 @@ class Dashboard extends PureComponent {
     });
   };
 
+  
+
   render() {
-    const { goal } = this.state;
+    const { goal, editing } = this.state;
     const { goals } = this.props;
     // console.log('this user is', this.props.user);
     return (
@@ -53,8 +56,9 @@ class Dashboard extends PureComponent {
         </form>
         {goals && goals.map(goal => 
           <li key={goal.key} id={goal.key}>{goal.name} 
-            {/* <button onClick={this.handleEdit}>Edit</button>
-            <button>Delete</button> */}
+            <button onClick={this.handleEdit}>Edit</button>
+            <button onClick={this.handleDelete}>Delete</button>
+            {editing ? <EditForm onEdit={editGoal}/> : null }
           </li>)}
       </div>
     );
@@ -64,5 +68,5 @@ export default connect (
   state => ({ 
     user: state.user,
     goals: state.goals }),
-  { newGoal, getUserGoals }
+  { newGoal, getUserGoals, editGoal }
 )(Dashboard);

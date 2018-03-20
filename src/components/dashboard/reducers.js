@@ -2,7 +2,7 @@ export const ADD_GOAL = 'ADD_GOAL';
 export const DELETE_GOAL = 'DELETE_GOAL';
 export const COMPLETE_GOAL = 'COMPLETE_GOAL';
 export const LOAD_GOALS = 'LOAD_GOALS';
-
+export const EDIT_GOAL = 'EDIT_GOAL';
 
 export function goals(state = [], { type, payload }) {
   switch(type) {
@@ -21,6 +21,9 @@ export function goals(state = [], { type, payload }) {
     case LOAD_GOALS:
       return payload;
 
+    case EDIT_GOAL:
+      return state.map(g => g.id === payload.id ? payload : g);
+    
     default: 
       return state;
   }

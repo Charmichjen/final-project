@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 
-class EditForm extends PureComponent{
+export default class EditForm extends PureComponent{
   
   constructor(props){
     super(props);
@@ -19,13 +19,10 @@ class EditForm extends PureComponent{
 
   handleSubmit = event => {
     event.preventDefault();
-
-    const { text } = this.state;
-    this.props.newGoal(text);
-    this.props.getUserGoals(this.props.user.uid);
-    this.setState({
-      goal: ''
+    this.props.onEdit({
+      ...this.state
     });
+    this.setState({ text: '' });
   };
 
   render(){
