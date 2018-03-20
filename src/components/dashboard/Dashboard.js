@@ -35,7 +35,7 @@ class Dashboard extends PureComponent {
   render() {
     const { goal } = this.state;
     const { goals } = this.props;
-    console.log('this user is', this.props.user);
+    // console.log('this user is', this.props.user);
     return (
       <div>
         <header><h1>Hello dashboard</h1></header>
@@ -43,7 +43,7 @@ class Dashboard extends PureComponent {
           <input onChange={this.handleChange} value={goal}/>
           <button>Add Goal</button>
         </form>
-        {goals && goals.map(goal => <li key={goal.id} id={goal.id}>{goal.name}</li>)}
+        {goals && goals.map(goal => <li key={goal.key} id={goal.key}>{goal.name}</li>)}
       </div>
     );
   }

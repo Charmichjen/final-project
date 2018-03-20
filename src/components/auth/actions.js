@@ -9,6 +9,7 @@ export function listenForUser() {
         payload: user
       });
     });
+
   };  
 }
  
