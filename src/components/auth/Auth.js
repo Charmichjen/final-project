@@ -2,25 +2,30 @@ import React, { PureComponent } from 'react';
 import firebaseui from 'firebaseui';
 import firebase from 'firebase';
 import { connect } from 'react-redux';
-import { providers } from '../services/firebase';
-// import { clearUser } from './actions';
+import { providers, db } from '../../services/firebase';
+import { clearUser } from './actions';
 
 
 const ui = new firebaseui.auth.AuthUI(firebase.auth());
+const users = db.ref('users');
 
-class Login extends PureComponent{
+class Auth extends PureComponent{
   componentDidMount() {
     this.props.user ? clearUser() : '';
     const { origin } = window.location;
     const { history } = this.props;
-
+    
     ui.start('#firebaseui-auth-container', {
       //need to correct this route or delete it.
-      signInSuccessUrl: `${origin}/game`,
+      signInSuccessUrl: `${origin}/dashboard`,
       callbacks: { 
-        signInSuccess: function() {
+        signInSuccess: function(user) {
           //need to change to route to go to correct place. should be where user came from
-          setTimeout(() =>  history.push('/game'), 100);
+          
+          setTimeout(() =>  {
+            users.child(user.uid).update({ name: user.displayName });
+            history.push('/dashboard');}, 100);
+          
           
           return false;
         }
@@ -48,5 +53,5 @@ class Login extends PureComponent{
 export default connect(
   //might be different state so change to what is needed.
   state => ({ user: state.user }),
-  null
-)(Login);
+  { clearUser }
+)(Auth);
