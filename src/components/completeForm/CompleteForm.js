@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import fileSaver from 'file-saver';
+import { addCompletedGoal } from './actions';
 
 
 class CompleteForm extends PureComponent {
@@ -13,6 +14,12 @@ class CompleteForm extends PureComponent {
 
    handleChange = ({ target }) => {
      this.setState({ [target.name]: target.value });
+   };
+
+   handleSubmit = event => {
+     event.preventDefault();
+     console.log('This shizzz was called');
+     this.props.addCompletedGoal(this.state);
    };
 
 
@@ -28,20 +35,20 @@ class CompleteForm extends PureComponent {
      const { date, description, location } = this.state;
 
      return (
-       <form>
+       <form onSubmit={this.handleSubmit}>
          <label htmlFor="date" >
-           <input name="date" onChange={this.handleChange} value={date}/>
+           <input required name="date" onChange={this.handleChange} value={date}/>
          </label>
          <label htmlFor="description" >
-           <input name="description" onChange={this.handleChange} value={description}/>
+           <input required name="description" onChange={this.handleChange} value={description}/>
          </label>
          <label htmlFor="location" >
-           <input name="location" onChange={this.handleChange} value={location}/>
+           <input required name="location" onChange={this.handleChange} value={location}/>
          </label>
          {/* <label htmlFor="image" >
            <input name="image" type="file" onChange={this.handleUpload} value={image}/>
          </label> */}
-         <button>Submit</button>
+         <button type="submit">Submit</button>
        </form>
      );
    }
@@ -49,5 +56,5 @@ class CompleteForm extends PureComponent {
 
 export default connect (
   null,
-  null
+  { addCompletedGoal }
 )(CompleteForm);
