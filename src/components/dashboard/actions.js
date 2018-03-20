@@ -17,6 +17,17 @@ export function newGoal(goal) {
 export function getUserGoals(id) {
   return {
     type: LOAD_GOALS,
-    payload: users.child(id).child('goals').once('value')
+    payload: users.child(id).child('goals').once('value').then(data => {
+      const goals = data.val();
+
+      if(!goals) return [];
+
+      return Object.keys(goals).map(key => {
+        let goal = {};
+        goal.name = goals[key];
+        goal.key = key;
+        return goal;
+      });
+    })
   };
 }
