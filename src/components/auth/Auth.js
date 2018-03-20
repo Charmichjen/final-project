@@ -13,8 +13,8 @@ class Auth extends PureComponent{
   componentDidMount() {
     this.props.user ? clearUser() : '';
     const { origin } = window.location;
-    const { history, user } = this.props;
-    const props = this.props;
+    const { history } = this.props;
+    
     ui.start('#firebaseui-auth-container', {
       //need to correct this route or delete it.
       signInSuccessUrl: `${origin}/dashboard`,
@@ -23,7 +23,7 @@ class Auth extends PureComponent{
           //need to change to route to go to correct place. should be where user came from
           
           setTimeout(() =>  {
-            users.child(user.uid).set({ name: user.displayName });
+            users.child(user.uid).update({ name: user.displayName });
             history.push('/dashboard');}, 100);
           
           

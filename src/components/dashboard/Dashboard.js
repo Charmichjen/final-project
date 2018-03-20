@@ -1,12 +1,18 @@
 import React, { PureComponent } from 'react';
 import { connect } from  'react-redux';
-import { newGoal } from './actions';
+import { newGoal, getUserGoals } from './actions';
 
 class Dashboard extends PureComponent {
 
   state = {
     goal: ''
   };
+
+  componentDidMount() {
+    // console.log('componentDidMount', this.props.user);
+    if(this.props.user)
+      this.props.getUserGoals(this.props.user.uid);
+  }
 
   handleChange = ({ target }) => {
     this.setState({
@@ -18,8 +24,6 @@ class Dashboard extends PureComponent {
     event.preventDefault();
 
     const { goal } = this.state;
-    // console.log(event.target.elements[0].value);
-    // console.log(goal);
     this.props.newGoal(goal);
     this.setState({
       goal: ''
@@ -29,6 +33,7 @@ class Dashboard extends PureComponent {
 
   render() {
     const { goal } = this.state;
+    console.log('this user is', this.props.user);
     return (
       <div>
         <header><h1>Hello dashboard</h1></header>
@@ -41,6 +46,6 @@ class Dashboard extends PureComponent {
   }
 }
 export default connect (
-  null,
-  { newGoal }
+  state => ({ user: state.user }),
+  { newGoal, getUserGoals }
 )(Dashboard);
