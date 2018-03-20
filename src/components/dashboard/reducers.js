@@ -19,10 +19,7 @@ export function goals(state = [], { type, payload }) {
       return state.map(g => g.id === payload.id ? payload : g);
 
     case LOAD_GOALS:
-      return {
-        ...state,
-        goals: payload
-      };
+      return payload;
 
     default: 
       return state;
