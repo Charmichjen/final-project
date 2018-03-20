@@ -8,10 +8,11 @@ class Dashboard extends PureComponent {
     goal: ''
   };
 
-  componentWillMount() {
+  componentWillReceiveProps(nextProps) {
     // console.log('componentDidMount', this.props.user);
-    if(this.props.user)
-      this.props.getUserGoals(this.props.user.uid);
+    if(nextProps.user !== this.props.user)
+    
+      this.props.getUserGoals(nextProps.user.uid);
   }
 
   handleChange = ({ target }) => {
