@@ -18,7 +18,6 @@ class CompleteForm extends PureComponent {
 
    handleSubmit = event => {
      event.preventDefault();
-     console.log('This shizzz was called');
      this.props.addCompletedGoal(this.state);
    };
 
