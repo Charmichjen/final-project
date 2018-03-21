@@ -1,7 +1,19 @@
 import React, { PureComponent } from 'react';
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'; 
+import { getSharedGoals } from './actions';
 
 class Explore extends PureComponent {
+
+  componentWillMount() {
+    this.props.getSharedGoals();
+  }
+
+  // componentWillReceiveProps(nextProps) {
+  //   // console.log('componentDidMount', this.props.user);
+  //   if(nextProps.sharedGoal !== this.props.user)
+    
+  //     this.props.getUserGoals(nextProps.user.uid);
+  // }
 
   render() {
     return (
@@ -11,6 +23,8 @@ class Explore extends PureComponent {
 }
 
 export default connect (
-  null,
-  null,
+  state => ({
+    sharedGoals: state.sharedGoals
+  }),
+  {  getSharedGoals }
 )(Explore);
