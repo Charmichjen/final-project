@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import fileSaver from 'file-saver';
+// import fileSaver from 'file-saver';
 import { addCompletedGoal } from './actions';
 
 

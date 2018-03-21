@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Home from '../home/Home';
 import Dashboard from '../dashboard/Dashboard';
 import Header from '../header/Header';
+import Explore from '../explore/Explore';
 
 //bring in private route if we use it. Add private route file from other lab if use private route
 //import PrivateRoute from './PrivateRoute'; 
@@ -30,6 +31,7 @@ class App extends PureComponent{
             </Switch>
           </div>
         </Router>
+        <Explore/>
       </div>
     );
   }
