@@ -27,7 +27,6 @@ class App extends PureComponent{
             <Switch>
               <Route exact path='/' component={Home}/> 
               <Route path='/dashboard' component={Dashboard}/>
-              {/* <PrivateRoute exact path='/game' component={Main}/> */}
               <Route path='/explore' component={Explore}/>
               <Route path='/profile/:id' component={Profile}/>
               <Redirect to='/' /> 

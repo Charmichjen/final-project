@@ -17,7 +17,6 @@ class Explore extends PureComponent {
           return <li key={i}>
             <Link to={`/profile/${goal.uid}`}>{goal.uid}</Link>
           </li>;
-
         })}
       </ul>
     );

@@ -4,8 +4,8 @@ import { loadProfile } from './actions';
 
 class Profile extends PureComponent {
 
-  componentWillMount() {
-    const id = '6s8oJCUr59SxCuX8bVucAgtnV9H2';
+  componentDidMount() {
+    const id = this.props.id;
     this.props.loadProfile(id);
   }
 
@@ -17,9 +17,8 @@ class Profile extends PureComponent {
 }
 
 export default connect (
-  // state => ({
-  //   sharedGoals: state.sharedGoals
-  // }),
-  null,
+  (state, props) => ({
+    id: props.match.params.id
+  }),
   { loadProfile }
 )(Profile);
