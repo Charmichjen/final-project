@@ -17,6 +17,7 @@ export class Header extends PureComponent {
         </div>
         <div>
           <Link to="/explore">Explore</Link>
+          &nbsp;<Link to="/dashboard">Dashboard</Link>
         </div>
       </header>
     );
