@@ -18,6 +18,9 @@ export class Header extends PureComponent {
           {user && <p>{user.displayName}</p>}
           <Link to="/" onClick={logOut}>Sign out</Link>
         </div>
+        <div>
+          <Link to="/explore">Explore</Link>
+        </div>
       </header>
     );
   }
