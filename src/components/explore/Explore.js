@@ -8,13 +8,6 @@ class Explore extends PureComponent {
     this.props.getSharedGoals();
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   // console.log('componentDidMount', this.props.user);
-  //   if(nextProps.sharedGoal !== this.props.user)
-    
-  //     this.props.getUserGoals(nextProps.user.uid);
-  // }
-
   render() {
     return (
       <p> Explore is here</p>
@@ -26,5 +19,5 @@ export default connect (
   state => ({
     sharedGoals: state.sharedGoals
   }),
-  {  getSharedGoals }
+  { getSharedGoals }
 )(Explore);

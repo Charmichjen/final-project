@@ -37,6 +37,7 @@ class CompleteForm extends PureComponent {
       this.setState({ image: target.elements.image.files[0] });
     };
   }
+  
   render() {
     const { date, description, location, image, share } = this.state;
 

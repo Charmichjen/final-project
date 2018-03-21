@@ -13,7 +13,6 @@ export function getSharedGoals() {
 
       return Object.keys(sharedGoals).map(key => {
         let goal = sharedGoals[key];
-        console.log(goal);
         return goal;
       });
     })
