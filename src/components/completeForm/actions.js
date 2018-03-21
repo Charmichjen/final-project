@@ -7,7 +7,9 @@ export function addCompletedGoal(goal) {
   return (dispatch, getState) => {
     let { uid } = getState().user;
     users.child(uid).child('completedGoals').push(goal);
-    if(goal.share) shared.push(goal);
+    let sharedGoal = goal;
+    sharedGoal.uid = uid;
+    if(goal.share) shared.push(sharedGoal);
   };
 }
 
