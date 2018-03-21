@@ -1,11 +1,12 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux'; 
-// import { getSharedGoals } from './actions';
+import { loadProfile } from './actions';
 
 class Profile extends PureComponent {
 
   componentWillMount() {
-    // this.props.getSharedGoals();
+    const id = '6s8oJCUr59SxCuX8bVucAgtnV9H2';
+    this.props.loadProfile(id);
   }
 
   render() {
@@ -20,6 +21,5 @@ export default connect (
   //   sharedGoals: state.sharedGoals
   // }),
   null,
-  null
-  // { getSharedGoals }
+  { loadProfile }
 )(Profile);
