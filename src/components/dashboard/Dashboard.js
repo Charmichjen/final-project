@@ -1,11 +1,14 @@
 import React, { PureComponent } from 'react';
 import { connect } from  'react-redux';
-import { newGoal, getUserGoals } from './actions';
+import { newGoal, getUserGoals, editGoal } from './actions';
+import EditForm from '../editForm/EditForm';
+import CompleteForm from '../completeForm/CompleteForm';
 
 class Dashboard extends PureComponent {
 
   state = {
-    goal: ''
+    goal: '',
+    editing: false
   };
 
   componentWillReceiveProps(nextProps) {
@@ -17,7 +20,8 @@ class Dashboard extends PureComponent {
 
   handleChange = ({ target }) => {
     this.setState({
-      goal: target.value
+      goal: target.value,
+      completed: false
     });
   };
    
@@ -30,11 +34,18 @@ class Dashboard extends PureComponent {
     this.setState({
       goal: ''
     });
-
   };
 
+  handleEdit = () => {
+    this.setState({
+      editing: true
+    });
+  };
+
+  
+
   render() {
-    const { goal } = this.state;
+    const { goal, editing } = this.state;
     const { goals } = this.props;
     // console.log('this user is', this.props.user);
     return (
@@ -44,7 +55,14 @@ class Dashboard extends PureComponent {
           <input onChange={this.handleChange} value={goal}/>
           <button>Add Goal</button>
         </form>
-        {goals && goals.map(goal => <li key={goal.key} id={goal.key}>{goal.name}</li>)}
+        {goals && goals.map((goal, i) => 
+          <li key={i} id={goal.key}>{goal.name} 
+            <button onClick={this.handleEdit}>Edit</button>
+            <button onClick={this.handleDelete}>Delete</button>
+            <button >Complete</button>
+            {editing ? <EditForm onEdit={editGoal}/> : null }
+          </li>)}
+        <CompleteForm/>
       </div>
     );
   }
@@ -53,5 +71,5 @@ export default connect (
   state => ({ 
     user: state.user,
     goals: state.goals }),
-  { newGoal, getUserGoals }
+  { newGoal, getUserGoals, editGoal }
 )(Dashboard);

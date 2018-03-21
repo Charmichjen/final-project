@@ -1,4 +1,4 @@
-import { goals, ADD_GOAL, DELETE_GOAL, COMPLETE_GOAL, LOAD_GOALS } from './reducers';
+import { goals, ADD_GOAL, DELETE_GOAL, COMPLETE_GOAL, LOAD_GOALS, EDIT_GOAL } from './reducers';
 
 
 it.skip('default state of an empty array', () => {
@@ -46,5 +46,9 @@ it.skip('completes a goal', () => {
 it.skip('Loads the auth users goals', () => {
   const state = goals(undefined, { type: LOAD_GOALS, payload: ['jen', 'char', 'mike'] });
   expect(state.goals).toEqual(['jen', 'char', 'mike']);
-}
-)
+});
+
+it('edits a goal', () => {
+  const state = goals(futureGoals, { type: EDIT_GOAL, payload: { id: 123, name: 'taco', completed: false } });
+  expect(state).toEqual([{ id: 123, name: 'taco', completed: false }]);
+});
