@@ -7,6 +7,7 @@ const completeImages = storage.ref('images');
 
 class CompleteForm extends PureComponent {
   state = {
+    name: this.props.name,
     date: '',
     description: '',
     location: '',
@@ -55,17 +56,17 @@ class CompleteForm extends PureComponent {
 
   render() {
     const { date, description, location, share, image } = this.state;
-    const { buttonText } = this.props;
+    
   
     return (
       <form onSubmit={this.handleSubmit}>
-        <label htmlFor="date" >
+        <label htmlFor="date" >Date:
           <input required name="date" onChange={this.handleChange} value={date}/>
         </label>
-        <label htmlFor="description" >
+        <label htmlFor="description" >Description:
           <input required name="description" onChange={this.handleChange} value={description}/>
         </label>
-        <label htmlFor="location" >
+        <label htmlFor="location" >Location:
           <input required name="location" onChange={this.handleChange} value={location}/>
         </label>
         <div>
@@ -77,15 +78,13 @@ class CompleteForm extends PureComponent {
         <label htmlFor="share">
           <input name="share" type="checkbox" onChange={this.handleToggle} value={share}/>
         </label>
-        <button type="submit">{buttonText}</button>
+        <button type="submit">Submit</button>
       </form>
     );
   }
 }
 
 export default connect (
-  () => ({
-    buttonText: 'addImage',
-  }),
+  null,
   { addCompletedGoal }
 )(CompleteForm);

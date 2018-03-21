@@ -3,7 +3,7 @@ import { connect } from  'react-redux';
 import { newGoal, getUserGoals, editGoal } from './actions';
 import EditForm from '../editForm/EditForm';
 import Goal from '../goal/Goal';
-import CompleteForm from '../completeForm/CompleteForm';
+
 
 class Dashboard extends PureComponent {
 
@@ -58,12 +58,11 @@ class Dashboard extends PureComponent {
           {goals && goals.map((g, i) => 
             <Goal key={i}  id={g.key} name={g.name} goal={g}/>)}
         </ul>
-        <CompleteForm/>
       </div>
     );
   }
 }
-// id={g.key} name={g.name}
+
 export default connect (
   state => ({ 
     user: state.user,
