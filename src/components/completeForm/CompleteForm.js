@@ -31,7 +31,7 @@ class CompleteForm extends PureComponent {
   };
 
   handleUpload(file, key) {
-    const uploadTask = completeImages.child(db.ref('temp').push().key).put(file); 
+    const uploadTask = completeImages.child(db.ref('temp').push().key).put(file); //change the temp, when connected
   
     return new Promise((resolve, reject) => {
       uploadTask.on('state_changed', () => {
@@ -50,9 +50,6 @@ class CompleteForm extends PureComponent {
     }));
   };
   
-  
- 
-
   render() {
     const { date, description, location, share, image } = this.state;
     const { buttonText } = this.props;
