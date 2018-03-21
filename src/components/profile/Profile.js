@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux'; 
 import { loadProfile } from './actions';
+import DetailGoal from '../detailGoal/DetailGoal';
 
 class Profile extends PureComponent {
 
@@ -11,7 +12,11 @@ class Profile extends PureComponent {
 
   render() {
     return (
-      <p> Profile is here</p>
+      <div>
+        <p> Profile is here</p>
+        <DetailGoal/>
+      </div>
+      
     );
   }
 }
