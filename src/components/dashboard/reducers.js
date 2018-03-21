@@ -13,7 +13,7 @@ export function goals(state = [], { type, payload }) {
       ];
 
     case DELETE_GOAL:
-      return state.filter(g => g.id !== payload);
+      return state.filter(g => g.key !== payload);
 
     case COMPLETE_GOAL:
       return state.map(g => g.id === payload.id ? payload : g);
