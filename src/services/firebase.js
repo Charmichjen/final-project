@@ -5,7 +5,7 @@ var config = {
   authDomain: 'the-bucket-list-9ca68.firebaseapp.com',
   databaseURL: 'https://the-bucket-list-9ca68.firebaseio.com',
   projectId: 'the-bucket-list-9ca68',
-  storageBucket: '',
+  storageBucket: 'the-bucket-list-9ca68.appspot.com',
   messagingSenderId: '327591023009'
 };
 
@@ -16,3 +16,5 @@ export const auth = firebaseApp.auth();
 export const providers = firebase.auth;
 
 export const db = firebaseApp.database();
+
+export const storage = firebase.storage();

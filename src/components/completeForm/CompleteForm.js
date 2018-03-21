@@ -1,8 +1,9 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import fileSaver from 'file-saver';
 import { addCompletedGoal } from './actions';
+import { storage, db } from '../../services/firebase'; 
 
+const completeImages = storage.ref('images');
 
 class CompleteForm extends PureComponent {
   state = {
@@ -17,10 +18,32 @@ class CompleteForm extends PureComponent {
     this.setState({ [target.name]: target.value });
   };
   
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
-    this.props.addCompletedGoal(this.state);
+    const { elements } = event.target;
+    const completed = { ...this.state };
+    this.handleUpload(elements.image.files[0])
+      .then(url => {
+        completed.image = url;
+        this.props.addCompletedGoal(completed);
+      });
+   
   };
+
+  handleUpload(file, key) {
+    const uploadTask = completeImages.child(db.ref('temp').push().key).put(file); 
+   
+
+    return new Promise((resolve, reject) => {
+      uploadTask.on('state_changed', () => {
+      }, 
+      reject, 
+      () => {
+        const downloadUrl = uploadTask.snapshot.downloadURL;
+        resolve(downloadUrl);
+      });
+    }); 
+  }
   
   handleToggle = () => {
     this.setState(prev => ({
@@ -29,17 +52,19 @@ class CompleteForm extends PureComponent {
   };
   
   
-  handleUpload({ target }) {
-    const reader = new FileReader();
-    reader.readAsDataURL(target.files[0]);
-    reader.onLoad = () => {
-  
-      this.setState({ image: target.elements.image.files[0] });
-    };
-  }
-  render() {
-    const { date, description, location, image, share } = this.state;
+  // handleUpload({ target }) {
+  //   const reader = new FileReader();
+    
+  //   reader.readAsDataURL(target.files[0]);
 
+  //   reader.onLoad = () => {
+  //     this.setState({ image: reader });
+  //   };
+  // }
+  render() {
+    const { date, description, location, share, image } = this.state;
+    const { buttonText } = this.props;
+  
     return (
       <form onSubmit={this.handleSubmit}>
         <label htmlFor="date" >
@@ -51,20 +76,24 @@ class CompleteForm extends PureComponent {
         <label htmlFor="location" >
           <input required name="location" onChange={this.handleChange} value={location}/>
         </label>
-        <label htmlFor="image" >
-          <input name="image" type="file" onChange={this.handleUpload} value={image}/>
-        </label>
+        <div>
+          <label htmlFor="image"> Add Picture:
+            <input name="image" ref={(input) => { this.pictureInput = input; }} type="file"/>
+            <img className="preview" src={image}/>
+          </label>
+        </div>
         <label htmlFor="share">
           <input name="share" type="checkbox" onChange={this.handleToggle} value={share}/>
         </label>
-        <button type="submit">Submit</button>
-        
+        <button type="submit">{buttonText}</button>
       </form>
     );
   }
 }
 
 export default connect (
-  null,
+  () => ({
+    buttonText: 'addImage',
+  }),
   { addCompletedGoal }
 )(CompleteForm);
