@@ -4,12 +4,17 @@ import { user } from '../components/auth/reducers';
 import thunk from 'redux-thunk';
 import promiseMiddleware from './promiseMiddleware';
 import { goals } from '../components/dashboard/reducers';
+import { sharedGoals } from '../components/explore/reducers';
+import { userProfile } from '../components/profile/reducers';
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const reducer = combineReducers({
   loading,
   user,
-  goals
+  goals,
+  sharedGoals,
+  userProfile
 });
 
 const store = createStore(

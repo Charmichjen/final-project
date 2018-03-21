@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import Home from '../home/Home';
 import Dashboard from '../dashboard/Dashboard';
 import Header from '../header/Header';
+import Explore from '../explore/Explore';
+import Profile from '../profile/Profile';
 
 //bring in private route if we use it. Add private route file from other lab if use private route
 //import PrivateRoute from './PrivateRoute'; 
@@ -24,8 +26,9 @@ class App extends PureComponent{
             <Header/>
             <Switch>
               <Route exact path='/' component={Home}/> 
-              <Route path='/dashboard/' component={Dashboard}/>
-              {/* <PrivateRoute exact path='/game' component={Main}/> */}
+              <Route path='/dashboard' component={Dashboard}/>
+              <Route path='/explore' component={Explore}/>
+              <Route path='/profile/:id' component={Profile}/>
               <Redirect to='/' /> 
             </Switch>
           </div>
