@@ -29,11 +29,11 @@ class App extends PureComponent{
               <Route path='/dashboard' component={Dashboard}/>
               {/* <PrivateRoute exact path='/game' component={Main}/> */}
               <Route path='/explore' component={Explore}/>
+              <Route path='/profile/:id' component={Profile}/>
               <Redirect to='/' /> 
             </Switch>
           </div>
         </Router>
-        <Profile/>
       </div>
     );
   }
