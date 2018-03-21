@@ -52,15 +52,19 @@ class CompleteForm extends PureComponent {
   };
   
   
-  // handleUpload({ target }) {
-  //   const reader = new FileReader();
-    
-  //   reader.readAsDataURL(target.files[0]);
 
-  //   reader.onLoad = () => {
-  //     this.setState({ image: reader });
-  //   };
-  // }
+  handleUpload({ target }) {
+    const reader = new FileReader();
+    reader.readAsDataURL(target.files[0]);
+    reader.onLoad = () => {
+  
+      this.setState({ image: target.elements.image.files[0] });
+    };
+  }
+  
+  render() {
+    const { date, description, location, image, share } = this.state;
+
   render() {
     const { date, description, location, share, image } = this.state;
     const { buttonText } = this.props;
