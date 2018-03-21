@@ -33,14 +33,14 @@ export function getUserGoals(id) {
   };
 }
 
-export function editGoal(goal){
-  return (dispatch, getState) => {
-    let { uid } = getState().user;
-    users.child(uid).child('goals').child(goal.id).update(goal);
+// export function editGoal(goal){
+//   return (dispatch, getState) => {
+//     let { uid } = getState().user;
+//     users.child(uid).child('goals').child(goal.id).update(goal);
 
-    dispatch({
-      type: EDIT_GOAL,
-      payload: goal
-    });
-  };
-}
+//     dispatch({
+//       type: EDIT_GOAL,
+//       payload: goal
+//     });
+//   };
+// }

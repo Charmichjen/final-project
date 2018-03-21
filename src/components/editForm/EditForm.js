@@ -6,14 +6,13 @@ export default class EditForm extends PureComponent{
     super(props);
 
     this.state = {
-      text: '',
-      ...props
+      name: ''
     };
   } 
 
   handleChange = ({ target }) => {
     this.setState({
-      text: target.value,
+      name: target.value,
     });
   };
 

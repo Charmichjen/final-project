@@ -13,9 +13,7 @@ class Dashboard extends PureComponent {
   };
 
   componentWillReceiveProps(nextProps) {
-    // console.log('componentDidMount', this.props.user);
     if(nextProps.user !== this.props.user)
-    
       this.props.getUserGoals(nextProps.user.uid);
   }
 
@@ -46,9 +44,9 @@ class Dashboard extends PureComponent {
   
 
   render() {
-    const { goal, editing } = this.state;
+    const { goal } = this.state;
     const { goals } = this.props;
-    // console.log('this user is', this.props.user);
+
     return (
       <div>
         <h1>Hello dashboard</h1>
@@ -56,15 +54,16 @@ class Dashboard extends PureComponent {
           <input onChange={this.handleChange} value={goal}/>
           <button>Add Goal</button>
         </form>
-        <ul>
+        <ul>Goals to do
           {goals && goals.map((g, i) => 
-            <Goal key={i} id={g.key} name={g.name}/>)}
+            <Goal key={i}  id={g.key} name={g.name} goal={g}/>)}
         </ul>
         <CompleteForm/>
       </div>
     );
   }
 }
+// id={g.key} name={g.name}
 export default connect (
   state => ({ 
     user: state.user,
