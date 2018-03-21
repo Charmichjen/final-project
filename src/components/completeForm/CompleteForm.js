@@ -32,8 +32,7 @@ class CompleteForm extends PureComponent {
 
   handleUpload(file, key) {
     const uploadTask = completeImages.child(db.ref('temp').push().key).put(file); 
-   
-
+  
     return new Promise((resolve, reject) => {
       uploadTask.on('state_changed', () => {
       }, 
@@ -52,18 +51,7 @@ class CompleteForm extends PureComponent {
   };
   
   
-
-  handleUpload({ target }) {
-    const reader = new FileReader();
-    reader.readAsDataURL(target.files[0]);
-    reader.onLoad = () => {
-  
-      this.setState({ image: target.elements.image.files[0] });
-    };
-  }
-  
-  render() {
-    const { date, description, location, image, share } = this.state;
+ 
 
   render() {
     const { date, description, location, share, image } = this.state;
