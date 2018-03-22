@@ -1,0 +1,17 @@
+@import '../../styles/variables.css';
+
+header.mainHeader {
+  width: 100%;
+  height: auto;
+  padding: 1rem;
+  background: $medium;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+
+}
