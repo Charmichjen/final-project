@@ -18,6 +18,14 @@ class Dashboard extends PureComponent {
       this.props.getCompletedGoals(nextProps.user.uid);
     }
   }
+  componentWillMount(){
+    if(this.props.user){
+      const { uid } = this.props.user;
+      this.props.getUserGoals(uid);
+      this.props.getCompletedGoals(uid);
+      
+    }
+  }
 
   handleChange = ({ target }) => {
     this.setState({
