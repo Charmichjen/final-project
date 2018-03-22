@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { logOut } from '../auth/actions';
 import { Link } from 'react-router-dom';
+import './header.css';
 
 
 export class Header extends PureComponent {
