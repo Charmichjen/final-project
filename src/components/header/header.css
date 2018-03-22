@@ -8,7 +8,7 @@ header.mainHeader {
   max-width: 100%;
   height: auto;
   padding: 1rem;
-  background: $medium;
+  background: $dark;
   flex-direction: column;
   justify-content: space-between;
 
@@ -22,12 +22,28 @@ header.mainHeader {
     flex-direction: row;
     justify-content: space-between;
     align-items: baseline;
+    color: $light;
+    
     p { margin-right: .5rem; }
-    h3 { font-size: .7rem, }
+    a {
+      text-decoration: none;
+      color: $light;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    /* h3 { 
+      font-size: .9rem;
+     } */
   }
 
   h1 {
     font-size: 1.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: $light;
   }
 }
 
@@ -37,12 +53,44 @@ header.mainHeader {
   background: $medium;
   
   section {
-    width: 60%; 
+    width: 50%; 
     flex-direction: row;
     justify-content: space-between;
 
     h2 {
       font-size: 1.2rem;
     }
+
+    a {
+      text-decoration: none;
+      color: $light;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+  }
+}
+
+@media (max-width: 420px){
+  header.mainHeader {
+    .topRow {
+      align-items: center;
+    }
+
+    .userInfo { 
+      flex-direction: column; 
+      align-items: flex-end;
+
+      p { margin: 0 0 5px; }
+    }
+
+    h1 { width: 6rem; }
+  }
+
+  .nav > section {
+    width: 100%;
+    /* padding: 0 1rem; */
   }
 }
