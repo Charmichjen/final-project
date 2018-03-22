@@ -24,6 +24,7 @@ export function getCompletedGoals(id){
       const result = Object.keys(goals).map(key => {
         const goal = goals[key];
         goal.name = goals[key].name;
+        goal.id = key;
         return goal;
       });
       return result;

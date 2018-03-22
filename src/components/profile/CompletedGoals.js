@@ -8,17 +8,17 @@ class CompletedGoals extends PureComponent {
     const { completedGoals, goals } = this.props;
     return (
       <div>
-        <ul>
-          {/* {completedGoals.map((goal, i) => {
+        <ul>Completed Goals
+          {completedGoals.map((goal, i) => {
             return <li key={i}>
-              <Link to={`/goal/${goal.id}`}>{goal.name}</Link>
+              <Link to={`/completedgoal/${goal.id}`}>{goal.name}</Link>
             </li>;
-          })} */}
+          })}
         </ul>
-        <ul>
-          {/* {goals.map((goal, i) => {
+        <ul>TODO Goals
+          {goals.map((goal, i) => {
             return <li key={i}>{goal.name}</li>;
-          })} */}
+          })}
         </ul>
       </div>
     );
@@ -26,8 +26,8 @@ class CompletedGoals extends PureComponent {
 }
 
 export default connect(state => ({
-  completedGoals: state.userProfile.completedGoals,
-  goals: state.userProfile.goals
+  completedGoals: state.completedGoals,
+  goals: state.goals
 }), 
 null
 )(CompletedGoals);
