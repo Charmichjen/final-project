@@ -31,7 +31,7 @@ class CompleteForm extends PureComponent {
    
   };
 
-  handleUpload(file, key) {
+  handleUpload(file) {
     const uploadTask = completeImages.child(db.ref('temp').push().key).put(file); 
   
     return new Promise((resolve, reject) => {

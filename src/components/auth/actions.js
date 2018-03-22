@@ -1,5 +1,6 @@
 import { auth } from '../../services/firebase';
 import { USER, CLEAR_USER } from './reducers';
+import { clearGoal } from '../dashboard/actions';
 
 export function listenForUser() {
   return dispatch => {
@@ -12,6 +13,7 @@ export function listenForUser() {
 
   };  
 }
+
  
 export function clearUser() {
   return {
@@ -20,5 +22,7 @@ export function clearUser() {
 }
 
 export function logOut() {
+  clearGoal();
   return auth.signOut();
 }
+

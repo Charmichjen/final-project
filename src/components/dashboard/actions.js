@@ -1,4 +1,4 @@
-import { ADD_GOAL, DELETE_GOAL, COMPLETE_GOAL, LOAD_GOALS, EDIT_GOAL, LOAD_COMPLETE } from './reducers';
+import { ADD_GOAL, LOAD_GOALS, LOAD_COMPLETE, CLEAR_GOALS } from './reducers';
 import { db } from '../../services/firebase';
 
 const users = db.ref('users');
@@ -11,6 +11,12 @@ export function newGoal(goal) {
       type: ADD_GOAL,
       payload: goal
     });
+  };
+}
+
+export function clearGoal(){
+  return {
+    type: CLEAR_GOALS,
   };
 }
 
@@ -28,7 +34,7 @@ export function getCompletedGoals(id){
       });
       return result;
     })
-  }
+  };
 }
 
 export function getUserGoals(id) {

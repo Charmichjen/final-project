@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react';
 import { connect } from  'react-redux';
 import { Link } from 'react-router-dom';
 import { newGoal, getUserGoals, getCompletedGoals, editGoal } from './actions';
-import EditForm from '../editForm/EditForm';
 import Goal from '../goal/Goal';
 
 
@@ -12,10 +11,6 @@ class Dashboard extends PureComponent {
     goal: '',
     editing: false
   };
-  // componentDidMount(){
-  //   const id = this.props.user.uid;
-  //   this.props.loadProfile(id);
-  // }
 
   componentWillReceiveProps(nextProps) {
     if(nextProps.user !== this.props.user){
@@ -53,7 +48,7 @@ class Dashboard extends PureComponent {
   render() {
     const { goal } = this.state;
     const { goals, completedGoals } = this.props;
-    console.log(completedGoals);
+  
     return (
       <div>
         <h1>Hello dashboard</h1>
