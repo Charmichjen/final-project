@@ -7,6 +7,7 @@ import Header from '../header/Header';
 import Explore from '../explore/Explore';
 import Profile from '../profile/Profile';
 import SharedGoal from '../sharedGallery/SharedGoal';
+import CompletedGoal from '../profile/CompletedGoal';
 //bring in private route if we use it. Add private route file from other lab if use private route
 //import PrivateRoute from './PrivateRoute'; 
 import { listenForUser } from '../auth/actions';
@@ -30,6 +31,8 @@ class App extends PureComponent{
               <Route path='/explore' component={Explore}/>
               <Route path='/profile/:id' component={Profile}/>
               <Route path='/goal/:id' component={SharedGoal}/>
+              <Route path='/completedgoal/:id' component={CompletedGoal}/>
+
               <Redirect to='/'/> 
             </Switch>
           </div>
