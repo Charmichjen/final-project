@@ -42,6 +42,8 @@ class Goal extends PureComponent{
           <button onClick={() => deleteGoal(id)}>Delete</button>
           <button onClick={this.toggleComplete}>Complete</button>
         </div>
+       {/* <EditForm id={id} text={name} onEdit={this.handleEdit} />  */}
+
         {editing ? <EditForm id={id} text={name} onEdit={this.handleEdit} /> : null }
         {complete ? <CompleteForm id={id} name={name} delete={deleteGoal} toggle={this.toggleComplete}/> : null}
       </li>
