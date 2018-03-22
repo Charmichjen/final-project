@@ -16,8 +16,6 @@ class SharedGallery extends PureComponent {
       </ul>
     );
   }
-
-
 }
 
 export default connect(state => ({
