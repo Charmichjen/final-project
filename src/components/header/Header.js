@@ -10,20 +10,28 @@ export class Header extends PureComponent {
   render() {
     const { user } = this.props;
     return (
-      <header className="mainHeader">
-        <div>
-          <h1>The Bucket list</h1>
-          <div>
-            {user && <p>{user.displayName}</p>}
-            <Link to='/' onClick={logOut}>Sign out</Link>
+      <div>
+        <header className="mainHeader">
+          <div className="topRow">
+            <h1>The Bucket list</h1>
+
+            {user && <div className="userInfo">
+              <p>Hello, {user.displayName}</p>
+              <h3><Link to='/' onClick={logOut}>Sign out</Link></h3>
+            </div>}
+
           </div>
+        </header>
+
+        <div className="nav">
+          {user && <section>
+            <h2><Link to='/explore'>Explore</Link></h2>
+            <h2><Link to='/dashboard'>Dashboard</Link></h2>
+            <h2><Link to={`/profile/${user.uid}`}>Profile</Link></h2>
+          </section>}
         </div>
-        <div>
-          <Link to='/explore'>Explore</Link>
-          &nbsp;<Link to='/dashboard'>Dashboard</Link>
-          &nbsp;{user && <Link to={`/profile/${user.uid}`}>Profile</Link>}
-        </div>
-      </header>
+        
+      </div>
     );
   }
 }

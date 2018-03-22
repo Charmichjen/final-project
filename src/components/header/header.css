@@ -1,17 +1,48 @@
 @import '../../styles/variables.css';
 
+header.mainHeader, .topRow, .userInfo, .nav > section {
+  display: flex;  
+}
+
 header.mainHeader {
-  width: 100%;
+  max-width: 100%;
   height: auto;
   padding: 1rem;
   background: $medium;
-  display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  .topRow {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .userInfo {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    p { margin-right: .5rem; }
+    h3 { font-size: .7rem, }
+  }
 
   h1 {
     font-size: 1.5rem;
   }
+}
 
+.nav {
+  max-width: 100%;
+  padding: 1rem;
+  background: $medium;
+  
+  section {
+    width: 60%; 
+    flex-direction: row;
+    justify-content: space-between;
 
+    h2 {
+      font-size: 1.2rem;
+    }
+  }
 }
