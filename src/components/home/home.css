@@ -31,3 +31,23 @@ img.firebaseui-idp-icon {
   margin: 0 auto;
   width: 150px;
 }
+
+.firebaseui-container {
+  display: flex;
+  justify-content: center;
+  margin: 1em;
+}
+
+.firebaseui-card-header,
+.firebaseui-title,
+.firebaseui-error-wrapper, 
+.firebaseui-textfield,
+.firebaseui-id-submit, 
+.firebaseui-error {
+  margin-top: 1em;
+}
+
+.mdl-textfield__label, 
+.firebaseui-id-secondary-link {
+  margin-right: .5em;
+}
