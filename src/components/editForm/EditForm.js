@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import './editForm.css';
 
 export default class EditForm extends PureComponent{
   
@@ -27,7 +28,7 @@ export default class EditForm extends PureComponent{
   render(){
     const { text } = this.state;
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className="editGoal" onSubmit={this.handleSubmit}>
         <input value={text} name="text" onChange={this.handleChange}/>
         <button type="submit">Update</button>
       </form>

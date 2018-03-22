@@ -1,0 +1,11 @@
+@import '../../styles/variables.css';
+
+.editGoal {
+  margin: 1rem 0 auto;
+  position: absolute;
+  bottom: 0;
+  input {
+    border: none; 
+  }
+
+}
