@@ -1,0 +1,25 @@
+@import '../../styles/variables.css';
+
+article.galleryImage {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: bottom; */
+  align-content: flex-end;
+  width: 96vw;
+  margin: .5rem auto;
+  img {
+    position: relative;
+    bottom: 0;
+    height: 96vw;
+    object-fit: cover;
+  }
+
+  .headline {
+    background: $medium;
+    
+    h2 {
+      color: $light;
+      font-size: 1.2rem;
+    }
+  }
+}
