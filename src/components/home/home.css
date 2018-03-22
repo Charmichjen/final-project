@@ -1,0 +1,31 @@
+@import '../../styles/variables.css';
+
+span.firebaseui-idp-text-long {
+  display: flex;
+  justify-content: flex-start;
+  text-align: center;
+  padding-left:1em;
+}
+
+button.firebaseui-idp-button {
+  display: flex;
+  justify-content: center;
+  max-height: 27px;
+  width: 180px;
+  margin: 3em;
+}
+
+.firebaseui-idp-text-short {
+  display: none;
+}
+
+img.firebaseui-idp-icon {
+  max-width: 15px;
+  max-height: 15px;
+  margin: 0;
+}
+
+.firebaseui-list-item {
+  margin: 0 auto;
+  width: 150px;
+}
