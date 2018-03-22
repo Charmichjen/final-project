@@ -64,7 +64,8 @@ class Dashboard extends PureComponent {
         </form>
 
         <section className="goals">
-          <ul>Goals to do
+          <h3>Goals to do</h3>
+          <ul>
             {goals && goals.map((g, i) => 
               <Goal key={i}  id={g.key} name={g.name} goal={g}/>)}
           </ul>
