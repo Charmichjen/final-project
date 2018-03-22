@@ -1,4 +1,4 @@
-import { ADD_GOAL, LOAD_GOALS, LOAD_COMPLETE } from './reducers';
+import { ADD_GOAL, LOAD_GOALS, LOAD_COMPLETE, DELETE_COMPLETE_GOAL } from './reducers';
 import { db } from '../../services/firebase';
 
 const users = db.ref('users');
@@ -48,6 +48,18 @@ export function getUserGoals(id) {
         return goal;
       });
     })
+  };
+}
+
+export function deleteCompletedGoal(id){
+  return (dispatch, getState) => {
+    const { uid } = getState().user;
+    users.child(uid).child('completedGoals').child(id).remove();
+
+    dispatch({
+      type: DELETE_COMPLETE_GOAL,
+      payload: id
+    });
   };
 }
 
