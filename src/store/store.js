@@ -3,7 +3,7 @@ import { loading } from '../components/app/reducers';
 import { user } from '../components/auth/reducers';
 import thunk from 'redux-thunk';
 import promiseMiddleware from './promiseMiddleware';
-import { goals } from '../components/dashboard/reducers';
+import { goals, completedGoals } from '../components/dashboard/reducers';
 import { sharedGoals } from '../components/explore/reducers';
 import { userProfile } from '../components/profile/reducers';
 
@@ -13,6 +13,7 @@ const reducer = combineReducers({
   loading,
   user,
   goals,
+  completedGoals,
   sharedGoals,
   userProfile
 });

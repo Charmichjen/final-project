@@ -1,20 +1,27 @@
 import React, { PureComponent } from 'react';
 import { connect } from  'react-redux';
-import { newGoal, getUserGoals, editGoal } from './actions';
+import { Link } from 'react-router-dom';
+import { newGoal, getUserGoals, getCompletedGoals, editGoal } from './actions';
 import EditForm from '../editForm/EditForm';
 import Goal from '../goal/Goal';
 
 
-class Dashboard extends PureComponent {
 
+class Dashboard extends PureComponent {
   state = {
     goal: '',
     editing: false
   };
+  // componentDidMount(){
+  //   const id = this.props.user.uid;
+  //   this.props.loadProfile(id);
+  // }
 
   componentWillReceiveProps(nextProps) {
-    if(nextProps.user !== this.props.user)
+    if(nextProps.user !== this.props.user){
       this.props.getUserGoals(nextProps.user.uid);
+      this.props.getCompletedGoals(nextProps.user.uid);
+    }
   }
 
   handleChange = ({ target }) => {
@@ -45,8 +52,8 @@ class Dashboard extends PureComponent {
 
   render() {
     const { goal } = this.state;
-    const { goals } = this.props;
-
+    const { goals, completedGoals } = this.props;
+    console.log(completedGoals);
     return (
       <div>
         <h1>Hello dashboard</h1>
@@ -58,6 +65,10 @@ class Dashboard extends PureComponent {
           {goals && goals.map((g, i) => 
             <Goal key={i}  id={g.key} name={g.name} goal={g}/>)}
         </ul>
+        <ul>Completed Goals
+          {completedGoals && completedGoals.map((g, i) => 
+            <li key={i}><Link to={`/goal/${g.id}`}>{g.date}&nbsp;{g.name}</Link></li>)}
+        </ul>
       </div>
     );
   }
@@ -66,6 +77,7 @@ class Dashboard extends PureComponent {
 export default connect (
   state => ({ 
     user: state.user,
+    completedGoals: state.completedGoals,
     goals: state.goals }),
-  { newGoal, getUserGoals, editGoal }
+  { newGoal, getUserGoals, editGoal, getCompletedGoals }
 )(Dashboard);
