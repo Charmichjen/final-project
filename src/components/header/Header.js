@@ -10,14 +10,15 @@ export class Header extends PureComponent {
     const { user } = this.props;
     return (
       <header>
-        <Link to="/"><h1>The Bucket list</h1></Link>
+        <h1>The Bucket list</h1>
         <div>
           {user && <p>{user.displayName}</p>}
-          <Link to="/" onClick={logOut}>Sign out</Link>
+          <Link to='/' onClick={logOut}>Sign out</Link>
         </div>
         <div>
-          <Link to="/explore">Explore</Link>
-          &nbsp;<Link to="/dashboard">Dashboard</Link>
+          <Link to='/explore'>Explore</Link>
+          &nbsp;<Link to='/dashboard'>Dashboard</Link>
+          &nbsp;{user && <Link to={`/profile/${user.uid}`}>Profile</Link>}
         </div>
       </header>
     );

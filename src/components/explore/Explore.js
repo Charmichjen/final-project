@@ -11,22 +11,17 @@ class Explore extends PureComponent {
   }
 
   render() {
-    const { sharedGoals } = this.props;
+    // const { sharedGoals } = this.props;
     return (
-      // <ul>
-      //   {sharedGoals.map((goal, i) => { 
-      //     return <li key={i}>
-      //       <Link to={`/profile/${goal.uid}`}>{goal.uid}</Link>
-      //     </li>;
-      //   })}
-      // </ul>
       <SharedGallery/>
     );
   }
 }
 
-export default connect (state => ({
-  sharedGoals: state.sharedGoals
-}),
+export default connect (
+//   state => ({
+//   sharedGoals: state.sharedGoals
+// })
+  null,
 { getSharedGoals }
 )(Explore);
