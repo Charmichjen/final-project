@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from  'react-redux';
+import { Link } from 'react-router-dom';
 import { newGoal, getUserGoals, getCompletedGoals, editGoal } from './actions';
 import EditForm from '../editForm/EditForm';
 import Goal from '../goal/Goal';
@@ -66,7 +67,7 @@ class Dashboard extends PureComponent {
         </ul>
         <ul>Completed Goals
           {completedGoals && completedGoals.map((g, i) => 
-            <li key={i}>{g.date}&nbsp;{g.name}</li>)}
+            <li key={i}><Link to={`/goal/${g.id}`}>{g.date}&nbsp;{g.name}</Link></li>)}
         </ul>
       </div>
     );
