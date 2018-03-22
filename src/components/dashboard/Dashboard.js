@@ -65,7 +65,8 @@ class Dashboard extends PureComponent {
             <Goal key={i}  id={g.key} name={g.name} goal={g}/>)}
         </ul>
         <ul>Completed Goals
-          {/* {completedGoal} */}
+          {completedGoals && completedGoals.map((g, i) => 
+            <li key={i}>{g.date}&nbsp;{g.name}</li>)}
         </ul>
       </div>
     );
@@ -75,7 +76,7 @@ class Dashboard extends PureComponent {
 export default connect (
   state => ({ 
     user: state.user,
-    profile: state.userProfile,
+    completedGoals: state.completedGoals,
     goals: state.goals }),
   { newGoal, getUserGoals, editGoal, getCompletedGoals }
 )(Dashboard);

@@ -21,9 +21,12 @@ export function getCompletedGoals(id){
       const goals = data.val();
 
       if(!goals) return [];
-      return Object.keys(goals).map(key => {
-        return goals[key];
+      const result = Object.keys(goals).map(key => {
+        const goal = goals[key];
+        goal.name = goals[key].name;
+        return goal;
       });
+      return result;
     })
   }
 }
