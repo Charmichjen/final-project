@@ -10,14 +10,16 @@ export function addCompletedGoal(goal) {
 
 
     let { uid, displayName } = getState().user;
-    users.child(uid).child('completedGoals').push(goal);
-    let sharedGoal = goal;
-    sharedGoal.user = displayName;
-    sharedGoal.uid = uid;
-    if(goal.share) shared.push(sharedGoal);
-    dispatch({
-      type: COMPLETE_GOAL,
-      payload: sharedGoal
+    users.child(uid).child('completedGoals').push(goal).then(data => {
+      let sharedGoal = goal;
+      sharedGoal.user = displayName;
+      sharedGoal.uid = uid;
+      sharedGoal.id = data.key;
+      if(goal.share) shared.push(sharedGoal);
+      dispatch({
+        type: COMPLETE_GOAL,
+        payload: sharedGoal
+      });
     });
    
   };

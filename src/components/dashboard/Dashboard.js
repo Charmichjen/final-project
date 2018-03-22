@@ -5,7 +5,6 @@ import { newGoal, getUserGoals, getCompletedGoals, editGoal, deleteCompletedGoal
 import Goal from '../goal/Goal';
 
 
-
 class Dashboard extends PureComponent {
   state = {
     goal: '',
@@ -22,8 +21,7 @@ class Dashboard extends PureComponent {
     if(this.props.user){
       const { uid } = this.props.user;
       this.props.getUserGoals(uid);
-      this.props.getCompletedGoals(uid);
-      
+      this.props.getCompletedGoals(uid);     
     }
   }
 
@@ -50,7 +48,6 @@ class Dashboard extends PureComponent {
       editing: true
     });
   };
-
   
 
   render() {
@@ -70,7 +67,10 @@ class Dashboard extends PureComponent {
         </ul>
         <ul>Completed Goals
           {completedGoals && completedGoals.map((g, i) => 
-            <li key={i}><Link to={`/goal/${g.id}`}>{g.date}&nbsp;{g.name}</Link><button onClick={() => deleteCompletedGoal(g.id)}>Delete</button></li>)}
+            <li key={i}>
+              <Link to={`/goal/${g.id}`}>{g.date}&nbsp;{g.name}</Link>
+              <button onClick={() => deleteCompletedGoal(g.id)}>Delete</button>
+            </li>)}
         </ul>
       </div>
     );
