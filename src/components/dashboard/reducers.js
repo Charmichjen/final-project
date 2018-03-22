@@ -5,6 +5,7 @@ export const LOAD_GOALS = 'LOAD_GOALS';
 export const EDIT_GOAL = 'EDIT_GOAL';
 export const LOAD_COMPLETE = 'LOAD_COMPLETE';
 export const CLEAR_GOALS = 'CLEAR_GOALS';
+export const DELETE_COMPLETE_GOAL = 'DELETE_COMPLETE_GOAL';
 
 export function goals(state = [], { type, payload }) {
   switch(type) {
@@ -42,6 +43,8 @@ export function completedGoals(state = [], { type, payload }){
         ...state,
         payload
       ]);
+    case DELETE_COMPLETE_GOAL:
+      return state.filter(g => g.id !== payload);
     default:
       return state;
   }
