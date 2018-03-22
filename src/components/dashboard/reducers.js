@@ -3,6 +3,7 @@ export const DELETE_GOAL = 'DELETE_GOAL';
 export const COMPLETE_GOAL = 'COMPLETE_GOAL';
 export const LOAD_GOALS = 'LOAD_GOALS';
 export const EDIT_GOAL = 'EDIT_GOAL';
+export const LOAD_COMPLETE = 'LOAD_COMPLETE';
 
 export function goals(state = [], { type, payload }) {
   switch(type) {
@@ -25,6 +26,15 @@ export function goals(state = [], { type, payload }) {
       return state.map(g => g.key === payload.id ? { ...payload } : g);
     
     default: 
+      return state;
+  }
+}
+
+export function completedGoals(state = [], { type, payload }){
+  switch(type){
+    case LOAD_COMPLETE:
+      return payload;
+    default:
       return state;
   }
 }
