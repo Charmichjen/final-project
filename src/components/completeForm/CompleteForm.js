@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { addCompletedGoal } from './actions';
+import { deleteGoal } from '../goal/actions';
 import { storage, db } from '../../services/firebase'; 
 
 const completeImages = storage.ref('images');
@@ -21,17 +22,24 @@ class CompleteForm extends PureComponent {
   
   handleSubmit = (event) => {
     event.preventDefault();
+
+    this.props.toggle();
+    
     const { elements } = event.target;
     const completed = { ...this.state };
+    
     this.handleUpload(elements.image.files[0])
       .then(url => {
         completed.image = url;
         this.props.addCompletedGoal(completed);
+      })
+      .then(() => {
+        this.props.delete(this.props.id);
       });
-   
+
   };
 
-  handleUpload(file, key) {
+  handleUpload(file) {
     const uploadTask = completeImages.child(db.ref('temp').push().key).put(file); 
   
     return new Promise((resolve, reject) => {
@@ -86,5 +94,5 @@ class CompleteForm extends PureComponent {
 
 export default connect (
   null,
-  { addCompletedGoal }
+  { addCompletedGoal, deleteGoal }
 )(CompleteForm);

@@ -12,7 +12,7 @@ export function listenForUser() {
 
   };  
 }
- 
+
 export function clearUser() {
   return {
     type: CLEAR_USER
@@ -20,5 +20,7 @@ export function clearUser() {
 }
 
 export function logOut() {
+  location.reload();
   return auth.signOut();
 }
+
