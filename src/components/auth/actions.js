@@ -22,7 +22,7 @@ export function clearUser() {
 }
 
 export function logOut() {
-  clearGoal();
+  location.reload();
   return auth.signOut();
 }
 
