@@ -3,6 +3,7 @@ import { connect } from  'react-redux';
 import { Link } from 'react-router-dom';
 import { newGoal, getUserGoals, getCompletedGoals, editGoal, deleteCompletedGoal } from './actions';
 import Goal from '../goal/Goal';
+import './dashboard.css';
 
 
 class Dashboard extends PureComponent {
@@ -55,23 +56,27 @@ class Dashboard extends PureComponent {
     const { goals, completedGoals, deleteCompletedGoal } = this.props;
   
     return (
-      <div>
-        <h1>Hello dashboard</h1>
+      <div className="user-dashboard">
+        {/* <h1>Hello dashboard</h1> */}
         <form onSubmit={this.handleSubmit}>
           <input onChange={this.handleChange} value={goal}/>
           <button>Add Goal</button>
         </form>
-        <ul>Goals to do
-          {goals && goals.map((g, i) => 
-            <Goal key={i}  id={g.key} name={g.name} goal={g}/>)}
-        </ul>
-        <ul>Completed Goals
-          {completedGoals && completedGoals.map((g, i) => 
-            <li key={i}>
-              <Link to={`/goal/${g.id}`}>{g.date}&nbsp;{g.name}</Link>
-              <button onClick={() => deleteCompletedGoal(g.id)}>Delete</button>
-            </li>)}
-        </ul>
+
+        <section className="goals">
+          <ul>Goals to do
+            {goals && goals.map((g, i) => 
+              <Goal key={i}  id={g.key} name={g.name} goal={g}/>)}
+          </ul>
+          <ul>Completed Goals
+            {completedGoals && completedGoals.map((g, i) => 
+              <li key={i}>
+                <Link to={`/goal/${g.id}`}>{g.date}&nbsp;{g.name}</Link>
+                <button onClick={() => deleteCompletedGoal(g.id)}>Delete</button>
+              </li>)}
+          </ul>
+        </section>
+
       </div>
     );
   }
