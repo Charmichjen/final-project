@@ -7,10 +7,7 @@ const shared = db.ref('shared');
 export function addCompletedGoal(goal) {
   return (dispatch, getState) => {
 
-    dispatch({
-      type: COMPLETE_GOAL,
-      payload: goal
-    });
+
 
     let { uid, displayName } = getState().user;
     users.child(uid).child('completedGoals').push(goal);
@@ -18,6 +15,10 @@ export function addCompletedGoal(goal) {
     sharedGoal.user = displayName;
     sharedGoal.uid = uid;
     if(goal.share) shared.push(sharedGoal);
+    dispatch({
+      type: COMPLETE_GOAL,
+      payload: sharedGoal
+    });
    
   };
 }

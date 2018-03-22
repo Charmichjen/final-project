@@ -51,3 +51,15 @@ export function getUserGoals(id) {
   };
 }
 
+export function deleteCompletedGoal(id){
+  return (dispatch, getState) => {
+    const { uid } = getState().user;
+    users.child(uid).child('completedGoals').child(id).remove();
+
+    // dispatch({
+    //   type: DELETE_GOAL,
+    //   payload: id
+    // });
+  };
+}
+
