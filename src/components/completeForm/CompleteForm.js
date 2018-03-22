@@ -22,6 +22,7 @@ class CompleteForm extends PureComponent {
   
   handleSubmit = (event) => {
     event.preventDefault();
+    this.props.toggle();
     const { elements } = event.target;
     const completed = { ...this.state };
     this.handleUpload(elements.image.files[0])
@@ -29,6 +30,8 @@ class CompleteForm extends PureComponent {
         completed.image = url;
         this.props.addCompletedGoal(completed);
       });
+    console.log(this.props);
+    this.props.delete(this.props.id);
   };
 
   handleUpload(file) {
