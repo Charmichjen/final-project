@@ -8,7 +8,7 @@ class SharedGallery extends PureComponent {
   render() {
     const { sharedGoals } = this.props;
     return (
-      <ul>
+      <ul className="goalImage">
         {sharedGoals.map((goal, i) => {
           return <li key={i}>
             <Link to={`/goal/${goal.id}`}>
