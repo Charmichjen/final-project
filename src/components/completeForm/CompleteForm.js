@@ -83,7 +83,7 @@ class CompleteForm extends PureComponent {
             <img className="preview" src={image}/>
           </label>
         </div>
-        <label htmlFor="share">
+        <label htmlFor="share"> Share Your Goal:
           <input name="share" type="checkbox" onChange={this.handleToggle} value={share}/>
         </label>
         <button type="submit">Submit</button>
