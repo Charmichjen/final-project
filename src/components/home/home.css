@@ -9,6 +9,7 @@ span.firebaseui-idp-text-long {
 }
 
 button.firebaseui-idp-button {
+  border: .5px solid rgba(243, 65, 11, 0.726);
   display: flex;
   justify-content: center;
   max-height: 27px;
@@ -35,6 +36,7 @@ img.firebaseui-idp-icon {
 .firebaseui-container {
   display: flex;
   justify-content: center;
+  padding-top: 2rem;
  
 }
 
@@ -51,9 +53,9 @@ img.firebaseui-idp-icon {
 .firebaseui-id-secondary-link {
   margin-right: .5em;
 }
-/* border: 2px solid $orange; */
 
 .image-container {
+  border-top: 2px solid rgba(243, 65, 11, 0.726);
   position: relative;
   width: 100%;
   height: 50rem;
@@ -61,5 +63,16 @@ img.firebaseui-idp-icon {
   linear-gradient(transparent, rgba(8,35,45, .8)),
     url(./antelope.jpg) no-repeat center;
   background-size: cover;
+}
+
+.text {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  text-shadow: 2px 4px 3px rgba(0, 0, 0, .8);
+  font-size: 1.5em;
+  line-height: 1.5;
+  margin: 10rem .5rem 0;
+  color: white;
 }
 
