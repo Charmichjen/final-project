@@ -6,6 +6,6 @@ const user = db.ref('users');
 export function loadProfile(id) {
   return {
     type: LOAD_USER,
-    payload: user.child(id).once('value')
+    payload: user.child(id).once('value').then(data => data.val())
   };
 }

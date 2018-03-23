@@ -18,7 +18,6 @@ class CompletedGoal extends PureComponent {
     const completedGoal = completedGoals.find(goal => goal.id === id);
     
     if(!completedGoal) return null;
-
     return (
       <div className="pgoal-detail">
         <img src={completedGoal.image}/>

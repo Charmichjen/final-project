@@ -53,7 +53,7 @@ class Dashboard extends PureComponent {
 
   render() {
     const { goal } = this.state;
-    const { goals, completedGoals, deleteCompletedGoal } = this.props;
+    const { goals, completedGoals, deleteCompletedGoal, user } = this.props;
   
     return (
       <div className="user-dashboard">
@@ -72,7 +72,9 @@ class Dashboard extends PureComponent {
           <ul>Completed Goals
             {completedGoals && completedGoals.map((g, i) => 
               <li key={i}>
-                <Link to={`/goal/${g.id}`}>{g.date}&nbsp;{g.name}</Link>
+                <Link to={`/completedgoal/${g.id}/${user.uid}`}>
+                  {g.date}&nbsp;{g.name}
+                </Link>
                 <button onClick={() => deleteCompletedGoal(g.id)}>Delete</button>
               </li>)}
           </ul>
