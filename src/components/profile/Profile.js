@@ -15,11 +15,11 @@ class Profile extends PureComponent {
 
   render() {
     
-    const { userProfile } = this.props;
+    const { userProfile, id } = this.props;
     return (
       <div>
         <p>{userProfile.name}</p>
-        <CompletedGoals/>
+        <CompletedGoals uid={id}/>
       </div>
     );
   }

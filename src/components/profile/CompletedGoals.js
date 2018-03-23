@@ -6,7 +6,7 @@ import './completedGoals.css';
 class CompletedGoals extends PureComponent {
 
   render() {
-    const { completedGoals, goals } = this.props;
+    const { completedGoals, goals, uid } = this.props;
     return (
       <div className="profile-list">
         <section className="todo">
@@ -22,7 +22,7 @@ class CompletedGoals extends PureComponent {
           <ul className="completedImage">
             {completedGoals.map((goal, i) => {
               return <li key={i}>
-                <Link to={`/completedgoal/${goal.id}`}>
+                <Link to={`/completedgoal/${goal.id}/${uid}` }>
                   <article className="completedGoal">
                     <img src={goal.image}/>
                     <div className="headline">
@@ -42,6 +42,7 @@ class CompletedGoals extends PureComponent {
 export default connect(state => ({
   completedGoals: state.completedGoals,
   goals: state.goals
+
 }), 
 null
 )(CompletedGoals);
