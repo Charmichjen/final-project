@@ -68,14 +68,14 @@ class CompleteForm extends PureComponent {
   
     return (
       <form className="completeForm" onSubmit={this.handleSubmit}>
-        <label htmlFor="date" >Date:
-          <input required name="date" onChange={this.handleChange} value={date}/>
+        <label htmlFor="date" >
+          <input required name="date" onChange={this.handleChange} value={date} placeholder="Date"/>
         </label>
-        <label htmlFor="description" >Description:
-          <input required name="description" onChange={this.handleChange} value={description}/>
+        <label htmlFor="description" >
+          <input required name="description" onChange={this.handleChange} value={description} placeholder="Description"/>
         </label>
-        <label htmlFor="location" >Location:
-          <input required name="location" onChange={this.handleChange} value={location}/>
+        <label htmlFor="location" >
+          <input required name="location" onChange={this.handleChange} value={location} placeholder="Location"/>
         </label>
         <div>
           <label htmlFor="image"> Add Picture:
@@ -83,7 +83,8 @@ class CompleteForm extends PureComponent {
             <img className="preview" src={image}/>
           </label>
         </div>
-        <label htmlFor="share"> Share Your Goal:
+        <label id="checkbox" htmlFor="share"> 
+          <p>Share Your Goal:</p>
           <input name="share" type="checkbox" onChange={this.handleToggle} value={share}/>
         </label>
         <button type="submit">Submit</button>
