@@ -67,7 +67,7 @@ class CompleteForm extends PureComponent {
     
   
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className="completeForm" onSubmit={this.handleSubmit}>
         <label htmlFor="date" >Date:
           <input required name="date" onChange={this.handleChange} value={date}/>
         </label>

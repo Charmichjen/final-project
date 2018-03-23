@@ -58,18 +58,19 @@ class Dashboard extends PureComponent {
     return (
       <div className="user-dashboard">
         {/* <h1>Hello dashboard</h1> */}
-        <form onSubmit={this.handleSubmit}>
+        <form className="addGoal" onSubmit={this.handleSubmit}>
           <input onChange={this.handleChange} value={goal}/>
           <button>Add Goal</button>
         </form>
 
         <section className="goals">
-          <h3>Goals to do</h3>
+          <h3>Bucket List Goals</h3>
           <ul>
             {goals && goals.map((g, i) => 
               <Goal key={i}  id={g.key} name={g.name} goal={g}/>)}
           </ul>
-          <ul>Completed Goals
+          <h3>Completed Goals</h3>
+          <ul>
             {completedGoals && completedGoals.map((g, i) => 
               <li key={i}>
                 <Link to={`/completedgoal/${g.id}/${user.uid}`}>
