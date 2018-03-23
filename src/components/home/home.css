@@ -47,6 +47,7 @@ img.firebaseui-idp-icon {
 .firebaseui-id-submit, 
 .firebaseui-error {
   margin-top: 1em;
+  color: $light;
 }
 
 .mdl-textfield__label, 
@@ -73,6 +74,18 @@ img.firebaseui-idp-icon {
   font-size: 1.5em;
   line-height: 1.5;
   margin: 10rem .5rem 0;
-  color: white;
+  color: $light;
+}
+
+.firebaseui-id-submit {
+  color: black;
+}
+
+.firebaseui-link {
+  color: $light;
+}
+
+.firebaseui-text {
+  color: $light;
 }
 
