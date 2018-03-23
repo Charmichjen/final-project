@@ -27,6 +27,7 @@ export default class EditForm extends PureComponent{
 
   render(){
     const { text } = this.state;
+    
     return (
       <form className="editGoal" onSubmit={this.handleSubmit}>
         <input value={text} name="text" onChange={this.handleChange}/>

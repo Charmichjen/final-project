@@ -14,7 +14,32 @@ div.user-dashboard {
       border: none;
       border-radius: 5px;
       margin: 1rem auto;
+      padding: .5rem;
+
+      text-align: center;
+      /* text-transform: uppercase; */
+      color: $dark;
+      font-weight: 100;
+      font-size: 1.3rem;
+
     }
+
+    /* input[type=checkbox] {
+      display:inline;
+    } */
+
+    #checkbox {
+      margin: 0 auto;
+      display: flex;
+      flex-direction: row;
+      width: 90%;
+      align-items: center;
+      
+      
+      p { width: 80%; }
+    }
+
+    input::placeholder { color: $medium; }
 
     button {
       width: 40%;
@@ -30,11 +55,15 @@ div.user-dashboard {
 
     }
 
-    .editGoal {
-      button { background: $medium; color: $dark;}
-    }
     
   }
+      .editGoal {
+        button { 
+          background: none; 
+          color: $dark;
+          border: solid 2px $dark;
+        }
+      }
   
   .addGoal {
     margin-top: 3rem;
@@ -44,6 +73,7 @@ div.user-dashboard {
     align-items: center;
 
   }
+
 }
 
 section.goals {

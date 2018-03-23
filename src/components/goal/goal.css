@@ -7,7 +7,7 @@
   /* padding: 2rem auto 1rem; */
   height: auto;
   color: $dark;
-  width: 100%;
+  width: 80%;
   
   h4 {
     font-size: 2rem;
@@ -30,7 +30,7 @@
       margin-bottom: 1rem;
       height: 1rem;
 
-      &:hover { text-decoration: underline; }
+      /* &:hover { text-decoration: underline; } */
       
 
 
