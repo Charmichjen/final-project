@@ -32,7 +32,7 @@ class App extends PureComponent{
               <Route path='/profile/:id' component={Profile}/>
               <Route path='/goal/:id' component={SharedGoal}/>
               <Route path='/completedgoal/:id/:uid' component={CompletedGoal}/>
-              <Redirect to='/dashboard'/> 
+              <Redirect to='/'/> 
             </Switch>
           </div>
         </Router>
