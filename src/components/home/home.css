@@ -35,7 +35,7 @@ img.firebaseui-idp-icon {
 .firebaseui-container {
   display: flex;
   justify-content: center;
-  margin: 1em;
+ 
 }
 
 .firebaseui-card-header,
@@ -51,3 +51,15 @@ img.firebaseui-idp-icon {
 .firebaseui-id-secondary-link {
   margin-right: .5em;
 }
+/* border: 2px solid $orange; */
+
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 50rem;
+  background: 
+  linear-gradient(transparent, rgba(8,35,45, .8)),
+    url(./antelope.jpg) no-repeat center;
+  background-size: cover;
+}
+
