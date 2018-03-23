@@ -48,9 +48,10 @@ header.mainHeader {
   background: $medium;
   
   section {
-    width: 50%; 
+    width: 60%; 
+    margin: 0 auto;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
 
     h2 { 
       font-size: 1.1rem;
@@ -63,10 +64,11 @@ header.mainHeader {
       &:hover { text-decoration: underline; }
     }
 
+
   }
 }
 
-@media (max-width: 420px){
+@media (max-width: 440px){
   
   header.mainHeader {
 

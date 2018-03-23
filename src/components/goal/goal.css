@@ -3,19 +3,17 @@
 .goal-todo {
   position: relative;
   z-index: 10;
-  margin: .5rem 1rem;
-  padding: 1rem;
+  margin: 1rem auto;
+  /* padding: 2rem auto 1rem; */
   height: auto;
   color: $dark;
-  &:hover { 
-    background: $medium;
-  }
+  width: 100%;
   
   h4 {
-    font-size: 1.2rem;
-    font-weight: 700;
+    font-size: 2rem;
+    font-weight: 400;
   }
-  .goal-buttons {
+  /* .goal-buttons { */
     /* transform: translateY(-1.1rem);
     &:hover {
       
@@ -31,12 +29,12 @@
       margin: 5px;
       margin-bottom: 1rem;
       height: 1rem;
-      &:hover { text-decoration: underline;
-      }
+
+      &:hover { text-decoration: underline; }
       
 
 
     }
 
-  }
+  
 }

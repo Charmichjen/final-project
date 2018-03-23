@@ -1,11 +1,14 @@
 @import '../../styles/variables.css';
 
 .editGoal {
-  margin: 1rem 0 auto;
+  /* margin: 1rem auto; */
   position: absolute;
   bottom: 0;
+  display: block;
   input {
-    border: none; 
+    border: none;
+    width: 50%;
+
   }
 
 }

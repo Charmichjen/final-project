@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import './editForm.css';
+
 
 export default class EditForm extends PureComponent{
   
