@@ -3,10 +3,13 @@
 .goalImage > li:hover .headline {
   height: 200px;
   h2 {
-    bottom: 60px;
-    font-size: 2rem;
-  }
- 
+    bottom: 40px;
+    font-size: 1.6rem;
+  } 
+}
+
+.headline {
+  transition: all .25s;
 }
 
 article.galleryImage {
@@ -35,7 +38,7 @@ article.galleryImage {
     position: absolute;
     h2 {
       box-sizing: border-box;
-      padding: .5rem;
+      padding: 1rem;
       text-align: center;
       color: $light;
       font-size: 1.3rem;
