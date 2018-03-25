@@ -1,8 +1,30 @@
 @import '../../styles/variables.css';
 
 div.pgoal-detail {
-  width: 70%;
-  margin: 3rem auto 1rem;
+  max-width: 80%;
+  margin: 0 auto 1rem;
+  padding: .5rem 1rem 1rem;
+
+  .cgoal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+
+    > section {
+      width: 80%;
+      padding: 1rem;
+    }
+  }
+
+  img {
+    width: 80%;
+    height: 400px;
+    object-fit: cover;
+    clip-path: polygon(100% 0, 100% 100%, 0 95%, 0 0);
+    margin-bottom: .5rem;
+  }
 
   h2, h3 { font-weight: 700; }
   
@@ -14,10 +36,18 @@ div.pgoal-detail {
   h3 {
     font-size: 1.2rem;
     margin: 10px 0 30px;
+
     a {
       text-decoration: none;
-      color: $dark;
-      &:hover { text-decoration: underline; }
+      top: .5rem; 
+      left: .5rem;
+      font-size: 1rem;
+      color: $medium;
+
+      &:hover { 
+        text-decoration: underline; 
+        color: $dark;
+      }
     }
   }
 
@@ -25,10 +55,46 @@ div.pgoal-detail {
     display: flex;
     flex-direction: row;
 
-    h4 { margin-right: 10px;}
+    h4 { margin-right: 10px; }
   }
 
   p {
-    margin-top: 10px; font-size: 1.4rem;
+    margin-top: 10px; 
+    font-size: 1.2rem;
+    line-height: 1.8rem; 
+  }
+}
+
+@media (max-width: 580px) {
+  div.pgoal-detail {
+    max-width: 100%;
+    .cgoal {
+      margin-top: .5rem;
+      
+      > section {
+        width: 100%;
+        padding: 1rem;
+      }
+      img {
+        height: 300px;
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: 720px) {
+  div.pgoal-detail {
+    max-width: 100%;
+    .cgoal {
+
+      > section {
+        width: 90%;
+        padding: 1.2rem;
+      }
+      img {
+        width: 90%;
+      }
+    }
   }
 }
