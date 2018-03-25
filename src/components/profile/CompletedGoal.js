@@ -22,19 +22,21 @@ class CompletedGoal extends PureComponent {
     
     return (
       <div className="pgoal-detail">
-        <img src={completedGoal.image}/>
-
-        <h3>
-          <Link to={`/profile/${uid}`}>{userProfile.name}</Link>
+        <h3 className="profile-l">
+          <Link to={`/profile/${uid}`}>Back to Profile</Link>
         </h3>
-
-        <h2>{completedGoal.name}</h2>
-        <div className="detail-flex">
-          <h4>{completedGoal.date}</h4>
-          <h4>|</h4>
-          <h4>{completedGoal.location}</h4>
+        <div className="cgoal">
+          <img src={completedGoal.image}/>
+          <section>
+            <h2>{completedGoal.name}</h2>
+            <div className="detail-flex">
+              <h4>{completedGoal.date}</h4>
+              <h4>|</h4>
+              <h4>{completedGoal.location}</h4>
+            </div>
+            <p>{completedGoal.description}</p>
+          </section>
         </div>
-        <p>{completedGoal.description}</p>
 
       </div>
     );
