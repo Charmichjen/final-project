@@ -14,10 +14,12 @@ class CompletedGoal extends PureComponent {
   }
 
   render() {
+
     const { completedGoals, id, uid, userProfile } = this.props;
     const completedGoal = completedGoals.find(goal => goal.id === id);
     
     if(!completedGoal) return null;
+    
     return (
       <div className="pgoal-detail">
         <img src={completedGoal.image}/>
@@ -25,6 +27,7 @@ class CompletedGoal extends PureComponent {
         <h3>
           <Link to={`/profile/${uid}`}>{userProfile.name}</Link>
         </h3>
+
         <h2>{completedGoal.name}</h2>
         <div className="detail-flex">
           <h4>{completedGoal.date}</h4>
@@ -32,6 +35,7 @@ class CompletedGoal extends PureComponent {
           <h4>{completedGoal.location}</h4>
         </div>
         <p>{completedGoal.description}</p>
+
       </div>
     );
   }
@@ -42,7 +46,6 @@ export default connect((state, props) => ({
   userProfile: state.userProfile,
   uid: props.match.params.uid,
   id: props.match.params.id
-
 }), 
 { getCompletedGoals, loadProfile }
 )(CompletedGoal);

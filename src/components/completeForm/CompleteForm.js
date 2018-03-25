@@ -59,9 +59,6 @@ class CompleteForm extends PureComponent {
     }));
   };
   
-  
- 
-
   render() {
     const { date, description, location, share, image } = this.state;
     
