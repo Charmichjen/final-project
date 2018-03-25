@@ -6,9 +6,12 @@ import './sharedGallery.css';
 class SharedGallery extends PureComponent {
 
   render() {
+    
     const { sharedGoals } = this.props;
+    
     return (
       <ul className="goalImage">
+        
         {sharedGoals.map((goal, i) => {
           return <li key={i}>
             <Link to={`/goal/${goal.id}`}>
@@ -21,6 +24,7 @@ class SharedGallery extends PureComponent {
             </Link>
           </li>;
         })}
+
       </ul>
     );
   }

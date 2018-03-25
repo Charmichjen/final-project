@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { loadProfile } from './actions';
 import CompletedGoals from './CompletedGoals';
 import { getCompletedGoals, getUserGoals } from '../dashboard/actions';
-
+import './profile.css';
 class Profile extends PureComponent {
 
   componentDidMount() {
@@ -17,8 +17,8 @@ class Profile extends PureComponent {
     
     const { userProfile, id } = this.props;
     return (
-      <div>
-        <p>{userProfile.name}</p>
+      <div className="user-profile">
+        <p>{userProfile.name}'s Profile</p>
         <CompletedGoals uid={id}/>
       </div>
     );

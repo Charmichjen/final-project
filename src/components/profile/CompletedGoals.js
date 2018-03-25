@@ -9,6 +9,7 @@ class CompletedGoals extends PureComponent {
     const { completedGoals, goals, uid } = this.props;
     return (
       <div className="profile-list">
+       
         <section className="todo">
           <h2>Bucket List Goals</h2>
           <ul className="goalsTodo">
@@ -17,6 +18,7 @@ class CompletedGoals extends PureComponent {
             })}
           </ul>
         </section>
+
         <section className="completed">
           <h2>Completed Goals</h2>
           <ul className="completedImage">
@@ -25,7 +27,7 @@ class CompletedGoals extends PureComponent {
                 <Link to={`/completedgoal/${goal.id}/${uid}` }>
                   <article className="completedGoal">
                     <img src={goal.image}/>
-                    <div className="headline">
+                    <div className="goal-head">
                       <h2>{goal.name}</h2>
                     </div>
                   </article>
@@ -42,7 +44,6 @@ class CompletedGoals extends PureComponent {
 export default connect(state => ({
   completedGoals: state.completedGoals,
   goals: state.goals
-
 }), 
 null
 )(CompletedGoals);
