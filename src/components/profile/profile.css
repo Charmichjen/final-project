@@ -1,0 +1,16 @@
+@import '../../styles/variables.css';
+
+.user-profile {
+  width: 98%;
+  margin: 0 auto 2rem;
+  padding: 1rem;
+  box-sizing: border-box;
+
+  > p {
+    font-size: 2rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    color: $medium;
+    margin-top: 1rem;
+  }
+}
