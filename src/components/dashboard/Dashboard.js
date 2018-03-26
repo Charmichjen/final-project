@@ -9,7 +9,8 @@ import './dashboard.css';
 class Dashboard extends PureComponent {
   state = {
     goal: '',
-    editing: false
+    editing: false,
+    newGoal: false
   };
 
   componentWillReceiveProps(nextProps) {
@@ -26,6 +27,12 @@ class Dashboard extends PureComponent {
     }
   }
 
+  handleToggle = () => {
+    this.setState({
+      newGoal: true
+    });
+  };
+
   handleChange = ({ target }) => {
     this.setState({
       goal: target.value,
@@ -40,7 +47,8 @@ class Dashboard extends PureComponent {
     this.props.newGoal(goal);
     this.props.getUserGoals(this.props.user.uid);
     this.setState({
-      goal: ''
+      goal: '',
+      newGoal: false
     });
   };
 
@@ -52,29 +60,33 @@ class Dashboard extends PureComponent {
   
 
   render() {
-    const { goal } = this.state;
+    const { goal, newGoal } = this.state;
     const { goals, completedGoals, deleteCompletedGoal, user } = this.props;
   
     return (
       <div className="user-dashboard">
-        {/* <h1>Hello dashboard</h1> */}
-        <form className="addGoal" onSubmit={this.handleSubmit}>
-          <input onChange={this.handleChange} value={goal}/>
-          <button>Add Goal</button>
-        </form>
-
         <section className="goals">
           <h3>Bucket List Goals</h3>
-          <ul>
+          <ul className="bucket-goals">
             {goals && goals.map((g, i) => 
               <Goal key={i}  id={g.key} name={g.name} goal={g}/>)}
           </ul>
-          <h3>Completed Goals</h3>
-          <ul>
+          <button className="newbl" onClick={this.handleToggle}>New Goal</button>
+
+          {newGoal && 
+              <form className="addGoal" onSubmit={this.handleSubmit}>
+                <input required onChange={this.handleChange} value={goal}/>
+                <button id="ag-button" type="submit">Add Goal</button>
+              </form>
+          
+          }
+
+          <h3 className="completed-heading">Completed Goals</h3>
+          <ul className="comp-goals">
             {completedGoals && completedGoals.map((g, i) => 
               <li key={i}>
                 <Link to={`/completedgoal/${g.id}/${user.uid}`}>
-                  {g.date}&nbsp;{g.name}
+                  {g.name}
                 </Link>
                 <button onClick={() => deleteCompletedGoal(g.id)}>Delete</button>
               </li>)}
