@@ -8,7 +8,8 @@ import './goal.css';
 class Goal extends PureComponent{
   state = {
     editing: false,
-    complete: false
+    // match these, otherwise "complete" sounds like state of goal
+    completing: false
   };
 
   toggleEdit = () => {
@@ -19,7 +20,7 @@ class Goal extends PureComponent{
 
   toggleComplete = () => {
     this.setState(prev => ({
-      complete: !prev.complete
+      completing: !prev.completing
     }));
   };
 
@@ -33,7 +34,7 @@ class Goal extends PureComponent{
 
   render(){
     const { id, name, deleteGoal } = this.props;
-    const { editing, complete } = this.state;
+    const { editing, completing } = this.state;
     return (
       <li className="goal-todo" >
         <h4>{name}</h4>
@@ -42,10 +43,9 @@ class Goal extends PureComponent{
           <button onClick={() => deleteGoal(id)}>Delete</button>
           <button onClick={this.toggleComplete}>Complete</button>
         </div>
-       {/* <EditForm id={id} text={name} onEdit={this.handleEdit} />  */}
 
         {editing ? <EditForm id={id} text={name} onEdit={this.handleEdit} /> : null }
-        {complete ? <CompleteForm id={id} name={name} delete={deleteGoal} toggle={this.toggleComplete}/> : null}
+        {completing ? <CompleteForm id={id} name={name} delete={deleteGoal} toggle={this.toggleComplete}/> : null}
       </li>
     );
   }

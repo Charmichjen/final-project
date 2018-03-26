@@ -4,61 +4,55 @@ import { db } from '../../services/firebase';
 const users = db.ref('users');
 
 export function newGoal(goal) {
-  return (dispatch, getState) => {
-    let { uid } = getState().user;
-    users.child(uid).child('goals').push(goal);
-    dispatch({
+  // use promise middleware to do this!
+  return {
       type: ADD_GOAL,
-      payload: goal
-    });
+      payload: users.child(uid).child('goals').push(goal)
   };
 }
+
+// extract common functionality:
+const pivotGoals = goals => {
+  if(!goals) return [];
+  return Object.keys(goals).map(key => {
+    const goal = goals[key];
+    // no need to assign other props, they are already on goal!
+    goal.id = key;
+    return goal;
+  });
+}
+
+const getGoals = (id, type) => users.child(id)
+  .child(type)
+  .once('value')
+  .then(data => pivotGoals(data.val()))
 
 export function getCompletedGoals(id){
   return {
     type: LOAD_COMPLETE,
-    payload: users.child(id).child('completedGoals').once('value').then(data => {
-      const goals = data.val();
-
-      if(!goals) return [];
-      const result = Object.keys(goals).map(key => {
-        const goal = goals[key];
-        goal.name = goals[key].name;
-        goal.id = key;
-        return goal;
-      });
-      return result;
-    })
+    payload: getGoals(id, 'completedGoals')
   };
 }
 
 export function getUserGoals(id) {
   return {
     type: LOAD_GOALS,
-    payload: users.child(id).child('goals').once('value').then(data => {
-      const goals = data.val();
-
-      if(!goals) return [];
-
-      return Object.keys(goals).map(key => {
-        let goal = {};
-        goal.name = goals[key];
-        goal.key = key;
-        goal.completed = goals[key].completed;
-        return goal;
-      });
-    })
+    payload: getGoals(id, 'goals')
   };
 }
 
 export function deleteCompletedGoal(id){
   return (dispatch, getState) => {
     const { uid } = getState().user;
-    users.child(uid).child('completedGoals').child(id).remove();
+    // this is async, you need to wait before dispatch!!!
 
     dispatch({
       type: DELETE_COMPLETE_GOAL,
-      payload: id
+      payload: users.child(uid)
+        .child('completedGoals')
+        .child(id)
+        .remove()
+        .then(() => id)
     });
   };
 }

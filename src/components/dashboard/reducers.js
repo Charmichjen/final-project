@@ -18,6 +18,7 @@ export function goals(state = [], { type, payload }) {
     case DELETE_GOAL:
       return state.filter(g => g.key !== payload);
 
+    // Is this here because not complete? Or because not needed?
     // case COMPLETE_GOAL:
     //   return state.map(g => g.id === payload.id ? payload : g);
 

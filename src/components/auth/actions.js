@@ -20,7 +20,8 @@ export function clearUser() {
 }
 
 export function logOut() {
-  location.reload();
-  return auth.signOut();
+  // Maybe wait for signout to complete before changing location
+  // (which could stop signOut from happening)
+  return auth.signOut().then(() => location.reload());
 }
 

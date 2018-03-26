@@ -3,26 +3,32 @@ import { db } from '../../services/firebase';
 
 const users = db.ref('users');
 
+// These are async actions, you need to handle accordingly
+
 export function deleteGoal(id){
   return (dispatch, getState) => {
     const { uid } = getState().user;
     users.child(uid).child('goals').child(id).remove();
 
-    dispatch({
+    return {
       type: DELETE_GOAL,
-      payload: id
-    });
+      payload: users.child(uid)
+        .child('goals').child(id)
+        .remove()
+        .then(() => id)
+    };
   };
 }
 
 export function editGoal(goal){
   return (dispatch, getState) => {
     let { uid } = getState().user;
-    users.child(uid).child('goals').child(goal.id).set(goal.name);
 
-    dispatch({
+    return {
       type: EDIT_GOAL,
-      payload: goal
-    });
+      payload: users.child(uid)
+        .child('goals').child(goal.id)
+        .set(goal.name).then(() => goal)
+    };
   };
 }
