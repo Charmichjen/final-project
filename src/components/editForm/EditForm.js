@@ -7,13 +7,13 @@ export default class EditForm extends PureComponent{
     super(props);
 
     this.state = {
-      name: ''
+      text: ''
     };
   } 
 
   handleChange = ({ target }) => {
     this.setState({
-      name: target.value,
+      text: target.value,
     });
   };
 
@@ -21,8 +21,9 @@ export default class EditForm extends PureComponent{
     event.preventDefault();
     this.props.onEdit({
       ...this.state
-    });
-    this.setState({ text: '' });
+    })
+      // need to wait for this to succeed/fail
+      .then(() => this.setState({ text: '' }));
   };
 
   render(){

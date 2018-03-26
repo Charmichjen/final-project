@@ -16,13 +16,17 @@ class CompleteForm extends PureComponent {
     share: false
   };
   
+  // this can handle checkbox too
   handleChange = ({ target }) => {
-    this.setState({ [target.name]: target.value });
+    this.setState({ [target.name]: target.type === 'checkbox' ? target.checked : target.value });
   };
   
   handleSubmit = (event) => {
     event.preventDefault();
 
+    // hmm, this is weird that you are communicating data changes via callbacks
+    // rather than actions that update the store.
+    // Also, this should probably happen after you know that rest of work has completed?
     this.props.toggle();
     
     const { elements } = event.target;
@@ -53,12 +57,6 @@ class CompleteForm extends PureComponent {
     }); 
   }
   
-  handleToggle = () => {
-    this.setState(prev => ({
-      share: !prev.share
-    }));
-  };
-  
   render() {
     const { date, description, location, share, image } = this.state;
     
@@ -68,22 +66,27 @@ class CompleteForm extends PureComponent {
         <label htmlFor="date" >
           <input required name="date" onChange={this.handleChange} value={date} placeholder="Date"/>
         </label>
+
         <label htmlFor="description" >
           <input required name="description" onChange={this.handleChange} value={description} placeholder="Description"/>
         </label>
+
         <label htmlFor="location" >
           <input required name="location" onChange={this.handleChange} value={location} placeholder="Location"/>
         </label>
+
         <div>
           <label htmlFor="image"> Add Picture:
             <input name="image" ref={(input) => { this.pictureInput = input; }} type="file"/>
             <img className="preview" src={image}/>
           </label>
         </div>
+
         <label id="checkbox" htmlFor="share"> 
           <p>Share Your Goal:</p>
-          <input name="share" type="checkbox" onChange={this.handleToggle} value={share}/>
+          <input name="share" type="checkbox" onChange={this.handleChange} value={share}/>
         </label>
+
         <button type="submit">Submit</button>
       </form>
     );

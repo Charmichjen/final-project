@@ -11,6 +11,10 @@ const users = db.ref('users');
 
 class Auth extends PureComponent{
   componentDidMount() {
+    // so every time the user naviagates to home 
+    // (which loads this component)
+    // you clear user, but don't log them out.
+    // doesn't sound like a good outcome....
     this.props.user ? clearUser() : '';
     const { origin } = window.location;
     const { history } = this.props;
