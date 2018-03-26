@@ -48,7 +48,7 @@ header.mainHeader {
   background: $medium;
   
   section {
-    width: 60%; 
+    width: 100%; 
     margin: 0 auto;
     flex-direction: row;
     justify-content: space-around;
@@ -68,7 +68,7 @@ header.mainHeader {
   }
 }
 
-@media (max-width: 440px){
+@media (max-width: 600px){
   
   header.mainHeader {
 
