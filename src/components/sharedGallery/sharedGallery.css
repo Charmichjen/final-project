@@ -8,7 +8,7 @@
   } 
 }
 
-.headline { transition: all .25s; }
+.headline { transition: all .5s; }
 
 article.galleryImage {
   width: 96vw;
